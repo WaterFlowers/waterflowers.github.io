@@ -1,0 +1,11 @@
+baseURL = 'https://changantwin.github.io/'
+locale = 'en-us'
+title = 'MyProject'
+theme = 'ananke'
+
+[params]
+  # 其他 params 级别的配置可以写在这里
+
+[params.homeInfoParams]
+  Title = "Welcom"
+  Content = "this is my blok"
