@@ -1,60 +1,58 @@
 baseURL = 'https://waterflowers.github.io/'
-title = '我的学术笔记'
+title = 'WaterFlowers 的知识库'
 theme = 'DoIt'
 locale = 'zh-cn'
 
-# 首页大标题模式
 [params]
-  # 首页全屏大标题（hero 风格）
-  [params.home]
-    # 大标题文字
-    title = '探索 · 记录 · 分享'
-    # 大标题下方的副标题
-    subtitle = '一个技术人的知识库'
-    # 是否启用大标题模式
+  # 首页个人简介模式（大气学术风）
+  [params.home.profile]
     enable = true
+    title = '探索 · 记录 · 分享'
+    subtitle = '一个技术人的学术笔记'
+   avatarURL = '/images/avatar.jpg'         # 如果有头像图片
+    description = '这里是 WaterFlowers 的个人知识库，记录学习与思考。'
+    social = true
 
   # 作者信息
   [params.author]
     name = 'WaterFlowers'
     link = 'https://github.com/WaterFlowers'
 
-  # 社交图标
   [params.social]
     github = 'WaterFlowers'
     email = 'your@email.com'
     rss = true
 
-  # 导航菜单
-  [[params.menu.main]]
-    name = '文档'
-    url = '/docs/'
-    weight = 1
-
-  [[params.menu.main]]
-    name = '博客'
-    url = '/posts/'
-    weight = 2
-
-  [[params.menu.main]]
-    name = '标签'
-    url = '/tags/'
-    weight = 3
-
-  [[params.menu.main]]
-    name = '关于'
-    url = '/about/'
-    weight = 4
-
-  # 搜索（内置 Lunr.js，自动索引内容）
+  # 搜索
   [params.search]
     enable = true
     type = 'lunr'
 
-  # 暗色模式
+  # 主题模式
   [params.theme]
     default = 'auto'
 
-  # 开启代码复制按钮
+  # 代码复制
   [params.code]
     copy = true
+
+# 导航菜单
+[[menu.main]]
+  name = '文档'
+  url = '/docs/'
+  weight = 1
+
+[[menu.main]]
+  name = '博客'
+  url = '/posts/'
+  weight = 2
+
+[[menu.main]]
+  name = '标签'
+  url = '/tags/'
+  weight = 3
+
+[[menu.main]]
+  name = '关于'
+  url = '/about/'
+  weight = 4
