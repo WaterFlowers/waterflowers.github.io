@@ -5,7 +5,11 @@ locale = 'zh-cn'
 
 [params]
   # 首页个人简介模式（大气学术风）
- customCSS = ["css/custom.css"]   # 这一行是关键！
+
+
+ stylePath = 'scss/main.scss' # 注意没有 assets 前缀
+
+
   [params.home.profile]
     enable = true
     title = '探索 · 记录 · 分享'

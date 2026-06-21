@@ -1,1 +1,2 @@
-@import "themes/docsy/theme/assets/scss/main";
+@import "themes/DoIt/assets/scss/style";   // 先引入 DoIt 原来的样式
+@import "_custom";                          // 再引入你自己的覆盖样式
