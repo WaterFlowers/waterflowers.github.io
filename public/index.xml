@@ -13,5 +13,13 @@
     <guid>http://localhost:1313/posts/hello/</guid>
     <description><![CDATA[<p>Welcome to my knowledge base! This is my first post.</p>]]></description>
 </item>
+<item>
+    <title>Hello, World</title>
+    <link>http://localhost:1313/posts/hellonihao/</link>
+    <pubDate>Sun, 21 Jun 2026 00:00:00 &#43;0000</pubDate>
+    <author>WaterFlowers</author>
+    <guid>http://localhost:1313/posts/hellonihao/</guid>
+    <description><![CDATA[<p>hello,my name is hahahha.</p>]]></description>
+</item>
 </channel>
 </rss>

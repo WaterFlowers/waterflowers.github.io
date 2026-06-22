@@ -5,4 +5,4 @@ draft: false
 cover: "/images/hero-bg.jpg"   # 封面图路径
 
 ---
-Welcome to my knowledge base! This is my first post.
+hello,my name is hahahha.

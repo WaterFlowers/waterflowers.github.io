@@ -5,12 +5,14 @@ languageCode = 'en'
 
 [params]
 
+  customCSS = ['css/custom.css']
 
   [params.home.profile]
     enable = true
     title = "Explore · Record · Share"
     subtitle = "A personal knowledge repository"
     avatarURL = "/images/avatar.jpg"
+
     social = true
 
 
