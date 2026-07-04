@@ -1,6 +1,7 @@
 baseURL = 'https://waterflowers.github.io/'
 title = 'SpatialLab'   # ← 改了
 theme = 'LoveIt'
+defaultTheme = "dark"   # ← 加上这一行，默认主题颜色
 languageCode = 'en'
 
 [params]
@@ -10,13 +11,13 @@ languageCode = 'en'
    maxWidth = "100%"    # 试试这个
 
 [params.header.title]
-  name = 'ZHANGHENGWEI-SpatialLab'          # ← 改了
+  name = 'HENG · SpatialLab'          # ← 改了
   subtitle = 'HPC · Digital Twin'  # ← 新增，可选
 
 [params.home.profile]
   enable = true
   title = "记录 · 探索  · 分享"   # ← 这是首页头像下方的标题，不是左上角
-  subtitle = "HPC · Spatial Computing · RAG"
+  subtitle = "HPC · Spatial Computing · RAG · UE"
   avatarURL = "/images/avatar.jpg"
   social = true
 
@@ -30,6 +31,12 @@ languageCode = 'en'
 [params.social]
   GitHub = 'WaterFlowers'
   Email = '326238137@qq.com'
+  LinkedIn = "你的LinkedInID"      # 添加 LinkedIn
+  Twitter = "你的TwitterID"        # 添加 Twitter
+  GoogleScholar = "你的ID"         # 添加 Google Scholar
+  Orcid = "你的ORCID"              # 添加 ORCID
+  YouTube = "我的油管"
+  QQ = "326238137"
 
 [[menu.main]]
   name = 'Posts'

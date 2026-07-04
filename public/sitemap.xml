@@ -18,5 +18,5 @@
             <loc>http://localhost:1313/posts/</loc><lastmod>2026-06-28T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</loc><lastmod>2026-06-28T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://localhost:1313/posts/test-cover/</loc><lastmod>2026-06-22T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://localhost:1313/categories/</loc></url><url>
-            <loc>http://localhost:1313/about/</loc></url></urlset>
+            <loc>http://localhost:1313/about/</loc></url><url>
+            <loc>http://localhost:1313/categories/</loc></url></urlset>

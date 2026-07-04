@@ -1,15 +1,15 @@
 ---
-title: "两京智策 · HPC 数字孪生系统"
+title: "两京智策 · HPC · 空间计算"
 date: 2026-06-30
 draft: false
-description: "面向唐代长安-洛阳历史地理分析的沉浸式决策平台"
+description: "面向唐代长安-洛阳历史地理分析的沉浸式"
 summary: "融合 HPC、RAG 与 UE5 的历史地理数字孪生系统"
 tags: ["HPC", "RAG", "数字孪生", "UE5", "Cesium"]
 feature: "/images/arch.svg"   # 缩略图
 weight: 1
 ---
 
-[🏠 返回首页](/)
+#### [🏠 返回首页](/)
 
 
 ## 项目背景
