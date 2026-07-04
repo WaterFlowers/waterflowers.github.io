@@ -2,7 +2,7 @@
 title: "Projects"
 ---
 
-[← 返回首页](/)
+[← Back to Home](/)
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "两京智策 · HPC · 空间计算"
+title: "HPC · SC · RAG · UE"
 date: 2026-06-30
 draft: false
 description: "面向唐代长安-洛阳历史地理分析的沉浸式"
@@ -9,7 +9,7 @@ feature: "/images/arch.svg"   # 缩略图
 weight: 1
 ---
 
-#### [🏠 返回首页](/)
+#### [Back to Home](/)
 
 
 ## 项目背景
