@@ -25,12 +25,12 @@ An immersive decision-making platform for the historical-geographical analysis o
 |:---:|:---:|:---:|
 
 
-[查看完整项目 →](/projects/liangjing/)
+[View Project Details →](/projects/liangjing/)
 
 ---
 
-## 📝 技术笔记
+## 📝 Technical Notes
 
 从项目开发中沉淀的一些思考与记录。
 
-[查看所有技术笔记 →](/posts/)
+[View All Technical Notes →](/posts/)

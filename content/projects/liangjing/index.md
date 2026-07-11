@@ -2,6 +2,9 @@
 title: "HPC · SC · RAG · UE"
 date: 2026-06-30
 draft: false
+type: "page"
+toc: true
+tocPosition: "left"
 description: "面向唐代长安-洛阳历史地理分析的沉浸式"
 summary: "融合 HPC、RAG 与 UE5 的历史地理数字孪生系统"
 tags: ["HPC", "RAG", "数字孪生", "UE5", "Cesium"]

@@ -1,5 +1,5 @@
 ---
-title: "技术笔记"
+title: "Technical Notes"
 type: "page"
 ---
 
