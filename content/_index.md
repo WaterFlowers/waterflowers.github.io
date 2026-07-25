@@ -31,6 +31,6 @@ An immersive decision-making platform for the historical-geographical analysis o
 
 ## 📝 Technical Notes
 
-从项目开发中沉淀的一些思考与记录。
+Notes and Reflections on Project Development.
 
 [View All Technical Notes →](/posts/)

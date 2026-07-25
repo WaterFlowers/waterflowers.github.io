@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Data - Tag - SpatialLab</title>
+        <link>http://localhost:1313/tags/data/</link>
+        <description>Data - Tag - SpatialLab</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 28 Apr 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/data/" rel="self" type="application/rss+xml" /><item>
+    <title>Data Analysis of the LiangJingCe</title>
+    <link>http://localhost:1313/posts/data-processing/</link>
+    <pubDate>Tue, 28 Apr 2026 00:00:00 &#43;0000</pubDate>
+    <author>WaterFlowers</author>
+    <guid>http://localhost:1313/posts/data-processing/</guid>
+    <description><![CDATA[The following table summarises the datasets employed in the study, including their specifications, analytical functions, and spatial coverage.]]></description>
+</item>
+</channel>
+</rss>
