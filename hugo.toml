@@ -38,6 +38,16 @@ languageCode = 'en'
   YouTube = "我的油管"
   QQ = "326238137"
 
+  # 添加不蒜子计数
+[params.busuanzi]
+  enable = true       # 是否开启
+  site_uv = true      # 全站独立访客数
+  site_uv_pre = '<i class="fa fa-user"></i>' # 访客数图标
+  site_pv = true      # 全站浏览量
+  site_pv_pre = '<i class="fa fa-eye"></i>'  # 浏览量图标
+  page_pv = true      # 单页浏览量
+  page_pv_pre = '<i class="far fa-eye fa-fw"></i>' # 单页浏览量图标
+
 [[menu.main]]
   name = 'Posts'
   url = '/posts/'
@@ -58,3 +68,4 @@ languageCode = 'en'
   url = '/about/'
   weight = 4
   # '关于我' 已删除，避免重复
+

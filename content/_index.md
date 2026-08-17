@@ -15,9 +15,26 @@ type: "page"
 
 An immersive decision-making platform for the historical-geographical analysis of Chang’an–Luoyang in the Tang Dynasty, integrating high-performance spatial computing, RAG-based intelligent retrieval, and UE5-powered immersive visualization.
 
-[![系统架构图](/images/arch.svg)](/projects/liangjing/)
+### 系统演示
+<!-- ===== 视频封面（放在这里） ===== -->
+{{< raw >}}
+<a href="你的B站链接" target="_blank" class="video-preview" style="display:block; text-decoration:none; margin:1.5rem auto; max-width:1200px;">
+  <div style="position:relative; width:100%; aspect-ratio:16/9; background:#0a0a0a; border-radius:12px; overflow:hidden;">
+    <img src="/images/video-cover.png" alt="The system demo" style="width:100%; height:100%; object-fit:cover; display:block;">
+    
+    <!-- 播放按钮 + 提示文字（同一行） -->
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); display:flex; align-items:center; gap:12px; background:rgba(0,0,0,0.65); padding:10px 20px; border-radius:30px; backdrop-filter:blur(4px);">
+      <span style="font-size:22px; color:#fff; line-height:1;">▶</span>
+      <span style="font-size:14px; color:rgba(255,255,255,0.85); font-weight:400; letter-spacing:0.5px; font-family:'Inter',sans-serif;">Click to watch the system demo</span>
+    </div>
+  </div>
+</a>
+{{< /raw >}}
+<!-- ===== 视频封面结束 ===== -->
 
+### 系统架构
 
+[![系统架构图](/images/arch.png)](/projects/liangjing/)
 
 ### 核心成果
 
