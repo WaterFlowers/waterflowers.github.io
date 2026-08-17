@@ -20,12 +20,16 @@ An immersive decision-making platform for the historical-geographical analysis o
 {{< raw >}}
 <a href="你的B站链接" target="_blank" class="video-preview" style="display:block; text-decoration:none; margin:1.5rem auto; max-width:1200px;">
   <div style="position:relative; width:100%; aspect-ratio:16/9; background:#0a0a0a; border-radius:12px; overflow:hidden;">
-    <img src="/images/video-cover.png" alt="The system demo" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <!-- 封面图 -->
+    <img src="/images/video-cover.png" alt="系统演示" style="width:100%; height:100%; object-fit:cover; display:block;">
+    
+    <!-- 半透明遮罩层：让图片暗下来，按钮更突出 -->
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.2);"></div>
     
     <!-- 播放按钮 + 提示文字（同一行） -->
-    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); display:flex; align-items:center; gap:12px; background:rgba(0,0,0,0.65); padding:10px 20px; border-radius:30px; backdrop-filter:blur(4px);">
-      <span style="font-size:22px; color:#fff; line-height:1;">▶</span>
-      <span style="font-size:14px; color:rgba(255,255,255,0.85); font-weight:400; letter-spacing:0.5px; font-family:'Inter',sans-serif;">Click to watch the system demo</span>
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); display:flex; align-items:center; gap:12px; background:rgba(0,0,0,0.55); padding:12px 24px; border-radius:30px; backdrop-filter:blur(4px); z-index:2;">
+      <span style="font-size:24px; color:#fff; line-height:1;">▶</span>
+      <span style="font-size:14px; color:rgba(255,255,255,0.9); font-weight:400; letter-spacing:0.5px; font-family:'Inter',sans-serif;">Click to watch the system demo</span>
     </div>
   </div>
 </a>
