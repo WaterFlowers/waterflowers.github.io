@@ -57,6 +57,32 @@
     display: block;
 }
 
+
+/*架构图边框颜色渐变*/
+/*
+.content img[src*="arch"] {
+   
+    background: #0a0e1a;
+    padding: 2rem 0;
+
+    mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 5%, 
+        rgba(0,0,0,1) 95%, 
+        rgba(0,0,0,0) 100%
+    );
+    -webkit-mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 5%, 
+        rgba(0,0,0,1) 95%, 
+        rgba(0,0,0,0) 100%
+    );
+} 
+*/
+
+
+
+
 /* 表格样式（用来展示三个数据） */
 .home .page table {
     margin: 1.5rem auto;
@@ -389,5 +415,8 @@
     letter-spacing: 0.03em !important;
     font-weight: 600 !important;
 }
+
+
+
 
 

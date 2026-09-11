@@ -11,9 +11,9 @@
             {{- /* Hugo and LoveIt */ -}}
             {{- if ne .Site.Params.footer.hugo false -}}
                 <div class="footer-line">
-                    {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo %v">Heng</a>` hugo.Version -}}
-                    {{- $theme := .Scratch.Get "version" | printf `<a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="Heng %v"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> Heng</a>` -}}
-                    {{- dict "Hugo" $hugo "Theme" $theme | T "poweredBySome" | safeHTML }}
+                    {{- $hugo := printf `<a href="/" target="_blank" rel="noopener noreffer" title="Hugo %v">Heng</a>` hugo.Version -}}
+                    {{- $theme := .Scratch.Get "version" | printf `<a href="" target="_blank" rel="noopener noreffer" title="Heng %v"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> Heng</a>` -}}
+               
                 </div>
             {{- end -}}
 

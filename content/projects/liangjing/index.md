@@ -23,7 +23,7 @@ weight: 1
 
 ## 系统架构
 
-![两京智策 HPC 优化架构图](/images/arch.svg)
+![两京智策 HPC 优化架构图](/images/arch.png)
 
 ## 核心实现
 
