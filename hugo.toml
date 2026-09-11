@@ -49,6 +49,16 @@ languageCode = 'en'
   page_pv_pre = '<i class="far fa-eye fa-fw"></i>' # 单页浏览量图标
 
 [[menu.main]]
+  name = 'Home'
+  url = '/'
+  weight = 1
+
+  [[menu.main]]
+  name = 'Projects'
+  url = '/projects/liangjing/'
+  weight = 2
+
+[[menu.main]]
   name = 'Posts'
   url = '/posts/'
   weight = 3
@@ -59,17 +69,8 @@ languageCode = 'en'
   weight = 4
 
 [[menu.main]]
-  name = 'Projects'
-  url = '/projects/liangjing/'
-  weight = 2
-
-[[menu.main]]
   name = 'About'
   url = '/about/'
   weight = 5
   # '关于我' 已删除，避免重复
 
-[[menu.main]]
-  name = 'Home'
-  url = '/'
-  weight = 1
