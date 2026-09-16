@@ -33,7 +33,12 @@ An immersive decision-making platform for the historical-geographical analysis o
 
 ### 系统架构
 
-[![系统架构图](/images/arch.png)](/projects/liangjing/)
+{{< raw >}}
+<div style="width:calc(100vw - 8vw); position:relative; left:50%; transform:translateX(-50%); margin:1.5rem 0;">
+  <img src="/images/arch.png" alt="系统架构图" 
+       style="width:100%; display:block; border:none; border-radius:0; padding:0;">
+</div>
+{{< /raw >}}
 
 ### 核心成果
 
