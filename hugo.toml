@@ -1,11 +1,11 @@
 baseURL = 'https://waterflowers.github.io/'
 title = 'SpatialLab'   # ← 改了
 theme = 'LoveIt'
-defaultTheme = "dark"   # ← 加上这一行，默认主题颜色
 languageCode = 'en'
 
 [params]
   customCSS = ['css/custom.css']
+  defaultTheme = "dark"   # ← 加上这一行，默认主题颜色
 
 [params.page]
    maxWidth = "100%"    # 试试这个
