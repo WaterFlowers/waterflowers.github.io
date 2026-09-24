@@ -1,6 +1,7 @@
 ---
 home: true
 type: "page"
+disableAnchoredHeadings: true
 ---
 
 &nbsp;

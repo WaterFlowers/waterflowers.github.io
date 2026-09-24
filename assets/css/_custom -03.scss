@@ -1,0 +1,455 @@
+
+/* ===== 项目摘要样式 ===== */
+.project-preview {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+}
+
+.project-preview img {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-preview img:hover {
+    transform: scale(1.01);
+}
+
+.project-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 1.5rem 0;
+    font-size: 1.05rem;
+}
+
+.project-stats span {
+    background: rgba(255,255,255,0.05);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.project-link .btn {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    background: #2563eb;
+    color: #fff !important;
+    border-radius: 30px;
+    text-decoration: none !important;
+    border: none !important;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.project-link .btn:hover {
+    background: #1d4ed8;
+}
+
+/* ===== 架构图全屏（唯一规则） ===== 
+.content img[src*="arch"] {
+    display: block !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}*/
+
+
+/*架构图边框颜色渐变*/
+/*
+.content img[src*="arch"] {
+   
+    background: #0a0e1a;
+    padding: 2rem 0;
+
+    mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 5%, 
+        rgba(0,0,0,1) 95%, 
+        rgba(0,0,0,0) 100%
+    );
+    -webkit-mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 5%, 
+        rgba(0,0,0,1) 95%, 
+        rgba(0,0,0,0) 100%
+    );
+} 
+*/
+
+
+
+
+/* 表格样式（用来展示三个数据） */
+.home .page table {
+    margin: 1.5rem auto;
+    border-collapse: collapse;
+}
+
+.home .page td {
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 30px;
+    font-size: 1.05rem;
+}
+
+/* 链接变成按钮样式 */
+.home .page a[href*="/projects/liangjing/"] {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    background: #2563eb;
+    color: #fff !important;
+    border-radius: 30px;
+    text-decoration: none !important;
+    margin: 1rem 0 2rem 0;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.home .page a[href*="/projects/liangjing/"]:hover {
+    background: #1d4ed8;
+}
+
+
+
+/* ===== 1. 正文排版优化（更加Distill风格） ===== */
+.content {
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: #2c3e50; /* 深灰，阅读更舒服 */
+}
+
+/* 标题用无衬线字体，与正文形成对比 */
+.content h1, .content h2, .content h3 {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica", "Arial", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 2.5rem;
+    border-bottom: 2px solid #eaeef2; /* 标题下的精致分隔线 */
+    padding-bottom: 0.3rem;
+}
+
+/* ===== 2. 表格美化（用于“核心成果”数据） ===== */
+.content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* 表格行间距 */
+    margin: 1.5rem 0;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+
+.content td {
+    padding: 0.6rem 1rem;
+    background: rgba(0,0,0,0.02); /* 极浅灰底 */
+    border-radius: 30px; /* 圆角胶囊 */
+    border: 1px solid #eaeef2;
+    font-weight: 500;
+    color: #1a2a3a;
+}
+
+/* ===== 3. 按钮美化（“查看完整项目”） ===== */
+.content a[href*="/projects/liangjing/"] {
+    display: inline-block;
+    padding: 0.7rem 2.2rem;
+    background: #2c3e50;
+    color: #fff !important;
+    border-radius: 30px;
+    text-decoration: none !important;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    border: 1px solid #2c3e50;
+    transition: all 0.25s ease;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.15);
+}
+
+.content a[href*="/projects/liangjing/"]:hover {
+    background: #1a2a3a;
+    border-color: #1a2a3a;
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.25);
+    transform: translateY(-2px);
+}
+
+
+
+/* ===== 正文与博客列表之间的过渡 ===== */
+
+/* 分隔线（在正文与博客之间） */
+.content hr {
+    margin: 4rem 0 2.5rem 0;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d0d7de, transparent);
+}
+
+/* 过渡区的小标题 "📝 技术笔记" */
+.content h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    border-bottom: none;
+    letter-spacing: 0.02em;
+}
+
+/* 过渡区的引导文字（“从项目开发中沉淀...”） */
+.content h3 + p {
+    color: #6b7a8a;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    border-left: 3px solid #d0d7de;
+    padding-left: 1rem;
+}
+
+
+/* ===== 深色模式适配 ===== */
+[theme="dark"] .content {
+    color: #d0d7de;
+}
+
+[theme="dark"] .content h1,
+[theme="dark"] .content h2,
+[theme="dark"] .content h3 {
+    border-bottom-color: #2a3a4a;
+    color: #e8edf2;
+}
+
+[theme="dark"] .content td {
+    background: rgba(255,255,255,0.04);
+    border-color: #2a3a4a;
+    color: #c8d0d8;
+}
+
+[theme="dark"] .content hr {
+    background: linear-gradient(to right, transparent, #2a3a4a, transparent);
+}
+
+[theme="dark"] .content h3 + p {
+    color: #8a9aaa;
+    border-left-color: #2a3a4a;
+}
+
+[theme="dark"] .content a[href*="/projects/liangjing/"] {
+    background: #3b4f5f;
+    border-color: #3b4f5f;
+}
+
+[theme="dark"] .content a[href*="/projects/liangjing/"]:hover {
+    background: #2a3a4a;
+    border-color: #2a3a4a;
+}
+
+
+
+
+/* 让“查看所有技术笔记”按钮与项目按钮风格统一 */
+/* 深色模式下，“查看所有技术笔记”链接 */
+.content a[href*="/posts/"] {
+    display: inline-block;
+    padding: 0.6rem 1.8rem;
+    background: transparent;
+   // color: #60a5fa !important;           /* 亮蓝色，深色背景可见 */
+    color: #c9b99a !important;  
+    border-radius: 30px;
+    text-decoration: none !important;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    //border: 1px solid rgba(96, 165, 250, 0.3);  /* 半透明亮蓝边框 */
+    border: 1px solid rgba(201, 185, 154, 0.25);
+    transition: all 0.25s ease;
+    margin-top: 1rem;
+}
+
+.content a[href*="/posts/"]:hover {
+    //background: rgba(96, 165, 250, 0.12);   /* 悬停时半透明蓝色背景 */
+    // color: #93bbfc !important;              /* 悬停变亮 */
+    //border-color: #60a5fa;
+
+    color: #e8dcc8 !important;
+    background: rgba(201, 185, 154, 0.08);
+    border-color: rgba(201, 185, 154, 0.4);
+}
+
+
+
+/* 测试不同背景色 */
+//body {
+//    background: #0d1b2a !important;  /* 换成你喜欢的颜色 */
+//}
+
+
+
+
+/* ===== Hero区整体 ===== */
+.home-profile {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    position: relative;
+}
+
+/* ===== 头像：加精致的光晕和边框 ===== */
+.home-avatar {
+    display: inline-block;
+    position: relative;
+    overflow: visible !important;   /* 确保不被裁剪 */
+    width: auto !important;
+    height: auto !important;
+}
+
+.home-avatar img {
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.home-avatar img:hover {
+    box-shadow: 0 0 60px rgba(96, 165, 250, 0.25), 0 8px 40px rgba(0,0,0,0.4) !important;
+} 
+
+/* ===== 标题：大号、粗体、字距收紧 ===== */
+.home-title {
+    font-size: 2.2rem !important;
+    font-weight: 700 !important;
+    font-family: "Inter", "Helvetica", sans-serif !important;
+    letter-spacing: -0.03em !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.2rem !important;
+    color: #e8edf2 !important;
+}
+
+/* ===== 副标题：亮色，小号，字距略宽 ===== */
+.home-subtitle {
+    font-size: 1.1rem !important;
+    color: #60a5fa !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.06em !important;
+    margin-bottom: 1.2rem !important;
+}
+
+/* ===== 简介文字：轻量、灰色、窄列 ===== */
+.home-profile p {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    color: rgba(255,255,255,0.6) !important;
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+}
+
+/* ===== 精致分隔线（视觉锚点） ===== */
+.home-profile .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #60a5fa, transparent);
+    margin: 1.8rem auto 0;
+    border-radius: 2px;
+}
+
+
+
+
+
+/* ===== 返回首页链接样式（统一匹配） ===== */
+.back-home-link {
+    display: inline-block;
+    font-family: "Inter", "Helvetica", sans-serif;  /* 匹配你现在的无衬线字体 */
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #60a5fa !important;           /* 匹配你的副标题蓝色 */
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent; /* 预留下划线位置 */
+    transition: all 0.2s ease;
+    margin-bottom: 1.5rem;               /* 与下方内容保持间距 */
+    letter-spacing: 0.02em;
+}
+
+.back-home-link:hover {
+    border-bottom-color: #60a5fa;        /* 悬停时显示下划线 */
+    color: #93bbfc !important;           /* 悬停稍微变亮 */
+}
+
+/* 深色模式适配（如果你开启了暗色背景） */
+[theme="dark"] .back-home-link {
+    color: #60a5fa !important;
+}
+[theme="dark"] .back-home-link:hover {
+    color: #93bbfc !important;
+}
+
+
+
+
+/* ===== About 页面：左头像右简介 ===== */
+
+
+.about-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+}
+
+/* ===== About 页面头像：强制圆形 ===== */
+/* ===== About 页面头像（只作用于 About 页） ===== */
+.about-avatar img {
+    width: 150px !important;
+    height: 150px !important;
+    min-width: 150px !important;      /* 防止被压缩 */
+    min-height: 150px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+    border: 3px solid rgba(255,255,255,0.1) !important;
+}
+
+/* 删除或注释掉之前所有通用的 avatar 选择器 */
+/* .content img[src*="avatar"],
+img[src*="avatar.jpg"] {
+    ...
+} */
+
+.about-info h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+}
+
+.about-info p {
+    margin-bottom: 0.6rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+}
+
+/* 手机端自动堆叠 */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .about-avatar img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+/* 头像与文字垂直对齐微调 */
+.about-container {
+    align-items: center !important;
+}
