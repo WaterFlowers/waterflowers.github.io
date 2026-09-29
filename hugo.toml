@@ -23,7 +23,7 @@ languageCode = 'en'
 
 [params.home.posts]
     enable = true   # 关闭博客文章列表，首页不显示文章
-    paginate = 3   # 显示最近3篇，避免太长
+    paginate = 10   # 显示最近3篇，避免太长
 
 [params.author]
   name = 'WaterFlowers'
