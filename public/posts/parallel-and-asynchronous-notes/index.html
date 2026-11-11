@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Waterflowers Knowledge</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/parallel-and-asynchronous-notes/">
+	<meta property="og:site_name" content="SpatialLab">
+	<meta property="og:title" content="Parallel and Asynchronous Notes">
+	<meta property="og:description" content="Parallel and Asynchronous Notes">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-02-28T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-02-28T00:00:00+00:00">
+		<meta property="article:tag" content="Parallel">
+		<meta property="article:tag" content="Asynchronous">
+		<meta property="article:tag" content="C&#43;&#43;">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Parallel and Asynchronous Notes">
+	<meta name="twitter:description" content="Parallel and Asynchronous Notes">
+			<meta name="twitter:site" content="@你的TwitterID">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/parallel-and-asynchronous-notes/" /><link rel="prev" href="http://localhost:1313/posts/cesium-data-processing/" /><link rel="next" href="http://localhost:1313/posts/data-processing/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Parallel and Asynchronous Notes",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/parallel-and-asynchronous-notes\/"
+        },"genre": "posts","keywords": "Parallel, Asynchronous, c\u002b\u002b","wordcount":  302 ,
+        "url": "http:\/\/localhost:1313\/posts\/parallel-and-asynchronous-notes\/","datePublished": "2026-02-28T00:00:00+00:00","dateModified": "2026-02-28T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "WaterFlowers"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'dark';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="SpatialLab">ZhangHengwei · HPC&amp;SpatialLab</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/projects/liangjing/"> Projects </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="SpatialLab">ZhangHengwei · HPC&amp;SpatialLab</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/projects/liangjing/" title="">Projects</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><link rel="stylesheet" href="/css/custom.css"><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Parallel and Asynchronous Notes</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>WaterFlowers</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-28">2026-02-28</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;302 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一并发和并行">一、并发和并行</a>
+      <ul>
+        <li><a href="#1并发">1、并发</a></li>
+        <li><a href="#2并行">2、并行</a></li>
+        <li><a href="#3并行和并发之间有什么关系呢">3、并行和并发之间有什么关系呢？</a></li>
+      </ul>
+    </li>
+    <li><a href="#二线程--进程">二、线程 &amp; 进程</a>
+      <ul>
+        <li><a href="#1线程">1、线程</a></li>
+        <li><a href="#2进程">2、进程</a></li>
+      </ul>
+    </li>
+    <li><a href="#三同步和异步">三、同步和异步</a>
+      <ul>
+        <li><a href="#1同步按顺序执行">1、同步（按顺序执行）</a></li>
+        <li><a href="#2异步">2、异步</a></li>
+      </ul>
+    </li>
+    <li><a href="#四总结">四、总结</a></li>
+    <li><a href="#五案例-基本语法">五、案例 (基本语法)</a>
+      <ul>
+        <li><a href="#1创建线程">1、创建线程</a></li>
+        <li><a href="#2等待线程结束-join">2、等待线程结束 join()</a></li>
+        <li><a href="#3分离线程-detach">3、分离线程 detach()</a></li>
+        <li><a href="#4互斥锁-stdmutex">4、互斥锁 std::mutex</a></li>
+        <li><a href="#5原子变量-stdatomic">5、原子变量 std::atomic</a></li>
+        <li><a href="#6综合例子">6、综合例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#六c-在数据科学中应用">六、C++ 在数据科学中应用</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>写程序时，完全不用管核心数，想创建多少线程就创建多少（当然，太多会因切换开销而变慢）。</p>
+<ul>
+<li>当“真正需要同时干活的线程数” ≤ 核心数时，它们趋向于<strong>并行（同时）</strong>。</li>
+<li>当“真正需要同时干活的线程数” &gt; 核心数时，它们趋向于<strong>并发</strong>。</li>
+</ul>
+<p>所以，一个 4 核 CPU 可以同时运行上百个线程，只是任何一个时刻，最多只有 4 个线程在真正被 CPU 执行。</p>
+<ul>
+<li><strong>计算密集型任务</strong>（如复杂的数学运算）：通常把线程数设为核心数（或核心数*2）就够了，设多了反而因切换开销变慢。</li>
+<li><strong>I/O 密集型任务</strong>（如网络爬虫）：一个线程等待网页下载时，CPU 完全可以去处理另一个线程。所以开几百个线程也没问题，它们大多数时间都在等 I/O，不占用 CPU。</li>
+</ul>
+<h2 id="一并发和并行">一、并发和并行</h2>
+<h3 id="1并发">1、并发</h3>
+<p>并发的意思就是在一段时间内可以同时处理多个任务，但在同一时间点只有一个任务在执行，并且多个任务之间的执行不一定是顺序的。在并发应用程序中，两个任务可以在一段时间内交替启动、运行和完成。例如，任务2可以在任务1完成之前就启动。</p>
+<p>在计算机科学中，不同的 CPU 实现并发的方式是不同的：</p>
+<ul>
+<li>在单核 CPU 环境中，并发是通过切换进程的上下文实现的。</li>
+<li>如果是多核心的 CPU，并发可以通过并行实现。</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/task-1.jpg"
+        data-srcset="/images/task-1.jpg, /images/task-1.jpg 1.5x, /images/task-1.jpg 2x"
+        data-sizes="auto"
+        alt="/images/task-1.jpg"
+        title="替代文字" /></p>
+<p><em>(图示：Task-1 和 Task-2 在时间轴上交替运行)</em></p>
+<h3 id="2并行">2、并行</h3>
+<p>假设你现在有两个任务：做饭以及和朋友打电话。你可以同时做这两件事情。你可以在做饭的同时通过手机给朋友打电话。那么你现在就是在并行的做事情。</p>
+<p>并行意味着在同一时间点能同时执行多个任务。在计算机科学中，并行计算是指同时进行多个计算的过程。在同一时间周期内两个任务同时执行。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/task-1-2.jpg"
+        data-srcset="/images/task-1-2.jpg, /images/task-1-2.jpg 1.5x, /images/task-1-2.jpg 2x"
+        data-sizes="auto"
+        alt="/images/task-1-2.jpg"
+        title="替代文字" /></p>
+<p><em>(图示：Task-1 和 Task-2 在同一时间段内并排运行)</em></p>
+<h3 id="3并行和并发之间有什么关系呢">3、并行和并发之间有什么关系呢？</h3>
+<p>并发性和并行性关注的是在计算机架构中任务或计算是如何被执行的。</p>
+<ul>
+<li>在单核 CPU 环境中，并发是通过在同一时间周期内上下文切换来实现的。即在一个特定的时间内，只有一个任务在执行。</li>
+<li>在多核环境下，并发是通过并发的执行多个任务来实现的。</li>
+</ul>
+<h2 id="二线程--进程">二、线程 &amp; 进程</h2>
+<h3 id="1线程">1、线程</h3>
+<p>线程是单一顺序执行的代码，该段代码可独立的执行。它是能被操作系统可执行的最小单元。一个程序既可以是单线程的，也可以是多线程的。</p>
+<h3 id="2进程">2、进程</h3>
+<p>一个进程就是一个程序运行的实例。一个程序可以有多个进程（把一个程序启动多次，每个进程都有自己的运行环境，相互不影响）。一个进程启动的时候通常只会启一个线程，例如一个主要的线程。但随着程序的执行，它可以创建更多的线程。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/process.png"
+        data-srcset="/images/process.png, /images/process.png 1.5x, /images/process.png 2x"
+        data-sizes="auto"
+        alt="/images/process.png"
+        title="替代文字" /></p>
+<p><em>(图示：Application 包含 Process，Process 包含 Thread-1 和 Thread-2)</em></p>
+<h2 id="三同步和异步">三、同步和异步</h2>
+<h3 id="1同步按顺序执行">1、同步（按顺序执行）</h3>
+<p>想象一下，你要写两封信，一封给你妈妈，另一封给你最好的朋友。你不能同时写两封信，除非你的双手能同时书写。在同步程序模型中，任务是一个接着一个执行的。每个任务需要等待前一个任务执行完成后才能开始。</p>
+<h3 id="2异步">2、异步</h3>
+<p>想象一下你有这样两个任务：制作三明治和在洗衣机中洗衣服。你可以把你的衣服放到洗衣机中，然后不需要等着它完成，你就可以去制作三明治了。这两个任务就是异步执行。在异步程序模型中，当一个任务已经执行了，你无需等待该任务执行完成，就可以切换到另外一个任务上。</p>
+<h4 id="1-在单线程和多线程环境中的同步和异步">(1) 在单线程和多线程环境中的同步和异步</h4>
+<ul>
+<li>
+<p><strong>① 同步-单线程</strong>：任务挨个执行。每个任务需要等待前一个任务执行完毕。（Task 1 -&gt; Task 2 -&gt; Task 3）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/task-1-2-3.jpg"
+        data-srcset="/images/task-1-2-3.jpg, /images/task-1-2-3.jpg 1.5x, /images/task-1-2-3.jpg 2x"
+        data-sizes="auto"
+        alt="/images/task-1-2-3.jpg"
+        title="替代文字" /></p>
+</li>
+<li>
+<p><strong>② 同步-多线程</strong>：每个任务在不同线程中执行，但需要等待前置任务的完成。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/thread-1.jpg"
+        data-srcset="/images/thread-1.jpg, /images/thread-1.jpg 1.5x, /images/thread-1.jpg 2x"
+        data-sizes="auto"
+        alt="/images/thread-1.jpg"
+        title="替代文字" /></p>
+</li>
+</ul>
+<p><strong>④ 异步-单线程</strong>：任务执行不需要等待其他任务的完成。但在一个时间点只能有一个任务执行。。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/start.jpg"
+        data-srcset="/images/start.jpg, /images/start.jpg 1.5x, /images/start.jpg 2x"
+        data-sizes="auto"
+        alt="/images/start.jpg"
+        title="替代文字" /></p>
+<ul>
+<li><strong>④ 异步-多线程</strong>：任务执行不需要等待其他任务的完成。但在同一个时间点可以有多个任务执行。（Thread-1 运行 Task-1 时，Thread-2 同时运行 Task-2）</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/thread-2.jpg"
+        data-srcset="/images/thread-2.jpg, /images/thread-2.jpg 1.5x, /images/thread-2.jpg 2x"
+        data-sizes="auto"
+        alt="/images/thread-2.jpg"
+        title="替代文字" /></p>
+<p>在开发和并行中同步和异步程序是什么样的角色？异步程序模型帮助我们实现并发，多线程中的异步程序模型是一种实现并发的方式。</p>
+<h4 id="2-多进程">(2) 多进程</h4>
+<p>每个进程拥有独立的内存空间。进程A不能直接访问进程B的变量，必须通过专门的“进程间通信（IPC）”机制来交换数据，比如管道、消息队列、共享内存、socket等。这种隔离让进程更安全：一个进程崩溃一般不会影响其他进程。</p>
+<p>C++标准目前没有跨平台的进程管理库，需要借助操作系统API或第三方库：</p>
+<ul>
+<li>Linux/Unix：<code>fork()</code>、<code>exec()</code> 等系统调用。</li>
+<li>Windows：<code>CreateProcess()</code> 等 API。</li>
+</ul>
+<h4 id="3-多线程编程">(3) 多线程编程</h4>
+<p>同一个进程内的所有线程共享该进程的内存空间（全局变量、堆内存等）。线程之间可以直接读写同一份数据，通信非常方便。但这也带来了<strong>数据竞争</strong>问题，必须用锁（<code>std::mutex</code>）、原子操作等同步手段来保护共享数据。一个线程的严重错误（如访问无效地址）可能导致整个进程崩溃。</p>
+<p>C++标准库从 C++11 起直接支持，使用 <code>&lt;thread&gt;</code>、<code>&lt;mutex&gt;</code>、<code>&lt;future&gt;</code> 等头文件。</p>
+<h4 id="4-async">(4) Async</h4>
+<p>让你从“管理线程”变成“管理任务”，把更多脏活交给库去做。在 C++ 中，<code>std::async</code> 是一个标准库函数，定义在 <code>&lt;future&gt;</code> 头文件中，位于 <code>std</code> 命名空间。</p>
+<h2 id="四总结">四、总结</h2>
+<p>1、开发和并行指的是任务执行的方式。</p>
+<p>2、同步和异步指的是通讯编程模型。</p>
+<p>3、单线程和多线程指的是任务执行的环境。</p>
+<h2 id="五案例-基本语法">五、案例 (基本语法)</h2>
+<h3 id="1创建线程">1、创建线程</h3>
+<p>#include <!-- raw HTML omitted -->
+#include <!-- raw HTML omitted --></p>
+<p>void task(int x) {
+// 线程要执行的代码
+}</p>
+<p>int main() {
+// 创建线程，立刻执行 task(10)
+// 第一个参数是可调用对象（函数、lambda、函数对象等），后面的参数是传给函数的实参
+std::thread t(task, 10);
+return 0;
+}</p>
+<h3 id="2等待线程结束-join">2、等待线程结束 join()</h3>
+<p>t.join(); // 主线程会在这里等待，直到t执行完
+// join 相当于“等它干完活再继续”
+// 如果不 join 也不 detach，线程对象析构时程序会直接终止（std::terminate）</p>
+<h3 id="3分离线程-detach">3、分离线程 detach()</h3>
+<p>t.detach(); // 线程在后台独立运行，主线程不再等待
+// 使用 detach 要小心：必须保证线程访问的资源（变量等）在它结束前一直有效。</p>
+<h3 id="4互斥锁-stdmutex">4、互斥锁 std::mutex</h3>
+<p>防止多个线程同时访问共享数据。
+#include <!-- raw HTML omitted --></p>
+<p>std::mutex mtx; // 一把锁</p>
+<p>void safe_print() {
+mtx.lock();   // 加锁
+// &hellip; 临界区，只有一个线程能进入
+mtx.unlock(); // 解锁
+}
+或者，更推荐的方式：用 std::lock_guard 自动加锁/解锁，不会忘。
+void safe_print() {
+std::lock_guard<a href="std::mutex" rel="">std::mutex</a> lock(mtx); // 构造时加锁
+// &hellip; 临界区
+// 离开作用域自动解锁，即使发生异常也安全
+}</p>
+<h3 id="5原子变量-stdatomic">5、原子变量 std::atomic</h3>
+<p>对简单的整型操作，用原子变量更轻量，不用锁。
+#include <!-- raw HTML omitted --></p>
+<p>std::atomic<!-- raw HTML omitted --> counter(0);</p>
+<p>void add() {
+++counter; // 原子操作，线程安全，无需 mutex
+}
+// std::atomic支持 ++、&ndash;、+= 等操作，保证中间状态不会被其他线程看到。</p>
+<h3 id="6综合例子">6、综合例子</h3>
+<p>#include <!-- raw HTML omitted -->
+#include <!-- raw HTML omitted -->
+#include <!-- raw HTML omitted --></p>
+<p>std::mutex mtx;</p>
+<p>void print(char c) {
+for (int i = 0; i &lt; 10; ++i) {
+std::lock_guard<a href="std::mutex" rel="">std::mutex</a> lock(mtx);
+std::cout &laquo; c; // 保证每次输出不会被其他线程打断
+}
+}</p>
+<p>int main() {
+std::thread t1(print, &lsquo;A&rsquo;);
+std::thread t2(print, &lsquo;B&rsquo;);
+t1.join();
+t2.join();
+return 0;
+}
+// 输出类似 AAAAAAAABBBBBBBBBB（不同运行顺序可能不同，但不会出现ABAB交叉错乱）。</p>
+<h2 id="六c-在数据科学中应用">六、C++ 在数据科学中应用</h2>
+<p>C++ 在数据科学中的重点图谱
+层次	重点内容	与数据科学的连接
+生存基础	指针、STL、内存管理、编译	把 Python 慢循环改写成高效 C++
+价值桥梁	pybind11、Cython	让 Python 无缝调用 C++ 核心
+性能倍增器	多线程 (OpenMP/thread)、SIMD、CUDA	榨干多核 CPU/GPU，加速模拟、推理、数据预处理
+造轮工坊	模板元编程、表达式模板	设计通用高效数值库（极少人需要）</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">return</span> <span class="mi">42</span><span class="p">;</span></span></span></code></pre></div></div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-02-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-title="Parallel and Asynchronous Notes" data-via="你的TwitterID" data-hashtags="Parallel,Asynchronous,c&#43;&#43;"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-title="Parallel and Asynchronous Notes"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-hashtag="Parallel"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-title="Parallel and Asynchronous Notes"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-title="Parallel and Asynchronous Notes"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-title="Parallel and Asynchronous Notes"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/parallel-and-asynchronous-notes/" data-title="Parallel and Asynchronous Notes" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fparallel-and-asynchronous-notes%2f&amp;text=Parallel%20and%20Asynchronous%20Notes" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/parallel/">Parallel</a>,&nbsp;<a href="/tags/asynchronous/">Asynchronous</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cesium-data-processing/" class="prev" rel="prev" title="两京智策开发笔记：Cesium 数据处理与空间分析"><i class="fas fa-angle-left" aria-hidden="true"></i>两京智策开发笔记：Cesium 数据处理与空间分析</a>
+            <a href="/posts/data-processing/" class="next" rel="next" title="LiangJingCe - Development NotesData : Data Sources">LiangJingCe - Development NotesData : Data Sources<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">WaterFlowers</a></span></div>
+
+            
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<section>
+  <span id="busuanzi_container_value_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+  &nbsp;|&nbsp;
+  <span id="busuanzi_container_value_site_uv">
+    访客数 <span id="busuanzi_value_site_uv"></span> 人
+  </span>
+</section>
+
+
+
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"comment":{}};</script><script src="/js/theme.js"></script></body>
+</html>
