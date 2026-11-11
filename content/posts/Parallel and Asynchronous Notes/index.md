@@ -81,9 +81,6 @@ C++标准库从 C++11 起直接支持，使用 `<thread>`、`<mutex>`、`<future
 #### (4) Async
 让你从“管理线程”变成“管理任务”，把更多脏活交给库去做。在 C++ 中，`std::async` 是一个标准库函数，定义在 `<future>` 头文件中，位于 `std` 命名空间。
 
-```cpp
-return 42;
-
 ## 四、总结
 
 1、开发和并行指的是任务执行的方式。
@@ -93,6 +90,7 @@ return 42;
 3、单线程和多线程指的是任务执行的环境。
 
 ## 五、案例 (基本语法)
+
 ### 1、创建线程
 #include <iostream>
 #include <thread>
@@ -163,13 +161,22 @@ int main() {
     return 0;
 }
 // 输出类似 AAAAAAAABBBBBBBBBB（不同运行顺序可能不同，但不会出现ABAB交叉错乱）。
+
 ## 六、C++ 在数据科学中应用
+
 C++ 在数据科学中的重点图谱
 层次	重点内容	与数据科学的连接
 生存基础	指针、STL、内存管理、编译	把 Python 慢循环改写成高效 C++
 价值桥梁	pybind11、Cython	让 Python 无缝调用 C++ 核心
 性能倍增器	多线程 (OpenMP/thread)、SIMD、CUDA	榨干多核 CPU/GPU，加速模拟、推理、数据预处理
 造轮工坊	模板元编程、表达式模板	设计通用高效数值库（极少人需要）
+
+
+
+```cpp
+return 42;
+
+
 
 
 
