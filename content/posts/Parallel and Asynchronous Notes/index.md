@@ -2,17 +2,10 @@
 title: "Parallel and Asynchronous Notes"
 date: 2026-02-28
 draft: false
-tags: ["Cesium", "GIS", "数据处理"]
+tags: ["Parallel", "Asynchronous", "c++"]
 summary: "Parallel and Asynchronous Notes"
 ---
 
----
-title: "并行和异步笔记记录"
-date: 2026-05-20
-draft: false
-tags: ["C++", "并发", "并行", "异步"]
-categories: ["技术笔记"]
----
 
 写程序时，完全不用管核心数，想创建多少线程就创建多少（当然，太多会因切换开销而变慢）。
 
