@@ -211,8 +211,215 @@ int main() {
 |std::promise<T>|	类模板|	手动设置值或异常，与 future 配对，用于线程间通信|
 |std::packaged_task<F>|	类模板|	包装可调用对象，生成 future，可传给线程执行|
 
+典型用法：
+std::async 快速启动任务。
+std::promise / std::future 实现更灵活的结果传递。
+std::packaged_task 把任务封装起来，搭配 std::thread 使用。
 
+#### 2. <thread> —— 线程管理
+|`组件`|	`种类`|	`作用`|
+| :--- | :---: | ---: | 
+|std::thread|	类|	创建和管理线程|
+|std::this_thread::sleep_for|	函数模板|	让当前线程休眠指定时间|
+|std::this_thread::yield|	函数|	主动让出 CPU 时间片|
+|std::this_thread::get_id|	函数|	获取当前线程 ID|
 
+常用配合：用 std::thread 显式创建线程，再用 <future> 传递结果。
+#### 3. <chrono> —— 时间工具
+
+|`组件`|	`种类`|	`作用`|
+| :--- | :---: | ---: | 
+|std::chrono::seconds|	类型别名|	表示秒级时长|
+|std::chrono::milliseconds|	类型别名|	毫秒|
+|std::chrono::steady_clock|	类|	单调时钟，适合测量间隔|
+
+常和 sleep_for 一起用，指定等待时长。
+#### 4. 同步工具（多线程共享数据时用）
+
+|`头文件`|	`核心类/模板`	|`作用`|
+| :--- | :---: | ---: | 
+|<mutex>|	std::mutex, std::lock_guard, std::unique_lock|	互斥锁，保护临界区|
+|<condition_variable>|	std::condition_variable|	线程等待/通知机制|
+|<atomic>|	std::atomic<T>|	原子操作，无锁同步|
+#### 5、总结
+
+```cpp
+启动异步任务
+│
+├─ std::async           → 自动创建线程，返回 future
+├─ std::packaged_task   → 包装任务，获取 future，可手动传给 thread
+└─ std::promise         → 纯手动设置值，与 future 配对
+
+获取结果
+└─ std::future / std::shared_future  → 通过 get() 等待并取值
+
+线程控制
+└─ std::thread / std::this_thread
+
+时间控制
+└─ std::chrono + sleep_for
+
+安全同步
+└─ std::mutex / std::atomic / std::condition_variable
+```
+（1）只想要异步执行并拿结果 → std::async + std::future。
+（2）需要精细控制线程和结果传递 → std::thread + std::promise / std::packaged_task + std::future。
+（3）涉及共享数据 → 必须搭配 <mutex> 或 <atomic>。
+
+## 八、智能指针
+
+### 1. 三巨头核心区别（选型铁律）
+
+|`指针类型`|	`外号`|	`核心特征`|	`使用场景`|
+| :--- | :---: | ---: | ---: | 
+|unique_ptr|	独占指针|	独生子。不准拷贝，只能移动（std::move）|	绝大多数日常场景，代替裸指针管理资源。|
+|shared_ptr	|共享指针	|引用计数。允许多人拷贝，最后一个销毁时释放资源。|	多个对象需要共享同一块数据（如多线程、图结构）。|
+|weak_ptr	|弱引用指针	|小弟助攻。不增加引用计数，配合 shared_ptr 使用。|	专门用来打破循环引用（内存泄漏元凶），观察者模式。|
+
+### 2. 创建方式（最重要的一行代码）
+
+|`指针类型`|	`正确创建姿势（C++14 起`）|	`错误姿势（别碰）`|
+| :--- | :---: | ---: | 
+|unique_ptr	|auto p = std::make_unique<int>(10);|	❌ unique_ptr<int> p(new int(10));（啰嗦且异常不安全）|
+|shared_ptr	|auto p = std::make_shared<int>(10);|	❌ shared_ptr<int> p(new int(10));（内存碎片多）|
+|核心记忆：永远优先使用 make_unique 和 make_shared。|		
+
+### 3. 常用成员函数速查表（必背！）
+
+|`函数`|	`作用`|	`示例`|	`注意事项`|
+| :--- | :---: | ---: | ---: | 
+|get()|	获取内部的裸指针（仅供查看）|	int* raw = p.get();	|千万不要 delete raw，否则智能指针析构时会二次释放崩溃。|
+|reset()	|重置指针。释放旧资源，指向新资源（或空）|	p.reset(); (置空)p.reset(new int(5)); (换新)		|释放后记得检查 if(p)。|	
+|release()	|仅 unique_ptr 有。放弃所有权，返回裸指针，但不释放内存|int* raw = p.release();	|调用后 p 变为 nullptr，你必须手动 delete raw，否则内存泄漏。|
+|swap()|	交换两个智能指针的内容|	p1.swap(p2);	|很少用，知道就行。|
+|use_count()|	仅 shared_ptr 有。返回当前引用计数|	long cnt = p.use_count();	|只用于调试，不要依赖它做业务逻辑。|
+
+### 4. 运算符重载（用起来像指针）
+
+|操作|	写法|	说明|
+| :--- | :---: | ---: | 
+|解引用|	*p	|获取对象本身。|
+|箭头访问|	p->func()	|访问成员函数或变量。|
+|布尔判空|	if(p) 或 if(!p)|	判断是否为空指针（检查内部是否 nullptr）。|
+
+### 5. 所有权转移（移动语义）
+
+```cpp
+unique_ptr：只能移动，不能拷贝。
+std::unique_ptr<int> p1 = std::make_unique<int>(10);
+std::unique_ptr<int> p2 = std::move(p1); // ✅ p1 变为空，p2 接手
+// std::unique_ptr<int> p3 = p1; // ❌ 编译报错（拷贝被禁用）
+
+shared_ptr：可拷贝（引用计数 +1）。
+std::shared_ptr<int> p1 = std::make_shared<int>(10);
+std::shared_ptr<int> p2 = p1; // ✅ 两者指向同一块内存，计数变为 2
+```
+
+### 6. 解决 shared_ptr 循环引用的杀手锏（weak_ptr）
+
+如果两个类互相持有 shared_ptr，会造成内存泄漏（析构时你等我、我等你）。
+破解法：将其中一方改为 weak_ptr。
+```cpp
+class B; // 前置声明
+class A { std::shared_ptr<B> b_ptr; };
+class B { std::weak_ptr<A> a_ptr; }; // 这里用 weak，不增加引用计数
+使用 weak_ptr 前，必须调用 lock() 将其临时升级为 shared_ptr，以确保访问时对象还在
+if (auto tmp = weak_a.lock()) { // 升级成功
+    tmp->doSomething();
+}
+```
+
+### 7、案例
+
+#### Unique_ptr (独占指针)
+```cpp
+#include <iostream>
+#include <memory>
+class Product {
+public:
+    void show() { std::cout << "Product ready" << std::endl; }
+};
+
+// 工厂函数：直接返回 unique_ptr，所有权转给调用方
+std::unique_ptr<Product> createProduct() {
+    return std::make_unique<Product>(); 
+}
+//std::unique_ptr<Product> createProduct()是一个函数 createProduct()，其类型为std::unique_ptr<Product>.,类似于int max（），其返回值是一个独占智能指针，这个指针独占Product对象。
+```
+
+返回值是调用函数std::make_unique<Product>()，这是模版函数,即工厂函数，调用这个函数生成指向Product对象的智能指针unique_ptr。
+也可以这样写:
+```cpp
+auto createProduct() {
+    return std::make_unique<Product>(); 
+}
+
+int main() {
+    auto p = createProduct(); // p 接管对象
+    p->show();
+    // 函数结束，p 自动 delete Product
+    return 0;
+}
+```
+
+#### Shared_Ptr 共享指针
+```cpp
+#include <iostream>
+#include <memory>
+class Resource {
+public:
+    ~Resource() { std::cout << "Resource released" << std::endl; }
+    void work() { std::cout << "Working..." << std::endl; }
+};
+void foo(std::shared_ptr<Resource> r) { 
+    r->work(); 
+    std::cout << "foo 中计数: " << r.use_count() << std::endl;
+}
+int main() {
+auto r1 = std::make_shared<Resource>(); // 计数 1
+//调用模版函数，生成智能指针指向Resource对象。
+    auto r2 = r1;  // 计数 2（共享同一份资源）
+foo(r2);    // 传入函数，计数临时变 3；值传递
+std::cout << "main 中计数: " << r1.use_count() << std::endl; // 输出 2
+std::cout << "main 中计数: " << r2.use_count() << std::endl; // 输出 2
+//两条输出一样
+//r1和r2共享一个内存；计数器是2；当传入函数的时候，值传递，拷贝构造，这时候函数中的计数是3；再回到main的时候函数中的指针释放了，这时候main中还是2；
+    // 离开 main，r2 先销毁（计数变1），r1 再销毁（计数变0，析构 Resource）
+    return 0;
+}
+```
+#### weak_ptr弱指针，不增加计数
+如果父子都用 shared_ptr，双方析构时你等我、我等你，内存永远不释放。必须把其中一方改成 weak_ptr。
+```cpp
+#include <iostream>
+#include <memory>
+class Child; // 前置声明
+class Parent {
+public:
+    std::shared_ptr<Child> child; // 父亲拥有孩子（强引用）
+    ~Parent() { std::cout << "Parent 释放" << std::endl; }
+};
+class Child {
+public:
+    std::weak_ptr<Parent> parent; // 孩子只观察父亲（弱引用）！关键点
+    ~Child() { std::cout << "Child 释放" << std::endl; }
+};
+int main() {
+auto dad = std::make_shared<Parent>();
+//调用模版函数，生成共享指针，指向parent对象
+auto son = std::make_shared<Child>();
+//调用模版函数，生成共享指针，指向Child对象
+    
+    dad->child = son;   // dad 强引用 son
+    son->parent = dad;  // son 弱引用 dad（若写成强引用，这里必泄漏！）
+    // 离开作用域，两个对象都正常析构（打印 Parent释放 和 Child释放）
+    return 0;
+}
+```
+<div align="center">
+  <img src=""E:\Hugo_site\static\images\ptr.jpg"" width="80%" alt="图1">
+  <p><em>图 1</em></p>
+</div>
 
 
 
