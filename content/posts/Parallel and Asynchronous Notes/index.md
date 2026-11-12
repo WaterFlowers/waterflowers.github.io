@@ -1,6 +1,6 @@
 ---
 title: "Parallel and Asynchronous Notes"
-date: 2026-02-28
+date: 2026-01-05
 draft: false
 tags: ["Parallel", "Asynchronous", "c++"]
 summary: "Parallel and Asynchronous Notes"
@@ -262,9 +262,9 @@ std::packaged_task 把任务封装起来，搭配 std::thread 使用。
 安全同步
 └─ std::mutex / std::atomic / std::condition_variable
 ```
-（1）只想要异步执行并拿结果 → std::async + std::future。
-（2）需要精细控制线程和结果传递 → std::thread + std::promise / std::packaged_task + std::future。
-（3）涉及共享数据 → 必须搭配 <mutex> 或 <atomic>。
+（1）只想要异步执行并拿结果 → std::async + std::future。  
+（2）需要精细控制线程和结果传递 → std::thread + std::promise / std::packaged_task + std::future。  
+（3）涉及共享数据 → 必须搭配 <mutex> 或 <atomic>。  
 
 ## 八、智能指针
 
@@ -417,7 +417,7 @@ auto son = std::make_shared<Child>();
 }
 ```
 <div align="center">
-  <img src=""E:\Hugo_site\static\images\ptr.jpg"" width="80%" alt="图1">
+  <img src="E:\Hugo_site\static\images\ptr.jpg" width="80%" alt="图1">
   <p><em>图 1</em></p>
 </div>
 
