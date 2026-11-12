@@ -74,7 +74,7 @@ summary: "Parallel and Asynchronous Notes"
 - **② 同步-多线程**：每个任务在不同线程中执行，但需要等待前置任务的完成。
 ![替代文字](/images/thread-1.jpg)
 
- **④ 异步-单线程**：任务执行不需要等待其他任务的完成。但在一个时间点只能有一个任务执行。。
+- **④ 异步-单线程**：任务执行不需要等待其他任务的完成。但在一个时间点只能有一个任务执行。。
    ![替代文字](/images/start.jpg)
 
 - **④ 异步-多线程**：任务执行不需要等待其他任务的完成。但在同一个时间点可以有多个任务执行。（Thread-1 运行 Task-1 时，Thread-2 同时运行 Task-2）
@@ -110,6 +110,7 @@ C++标准库从 C++11 起直接支持，使用 `<thread>`、`<mutex>`、`<future
 ## 五、案例 (基本语法)
 
 ### 1、创建线程
+```cpp
 #include <iostream>
 #include <thread>
 
@@ -123,6 +124,7 @@ int main() {
     std::thread t(task, 10); 
     return 0;
 }
+```
 ### 2、等待线程结束 join()
 t.join(); // 主线程会在这里等待，直到t执行完
 // join 相当于“等它干完活再继续”
@@ -132,6 +134,7 @@ t.detach(); // 线程在后台独立运行，主线程不再等待
 // 使用 detach 要小心：必须保证线程访问的资源（变量等）在它结束前一直有效。
 ### 4、互斥锁 std::mutex
 防止多个线程同时访问共享数据。
+```cpp
 #include <mutex>
 
 std::mutex mtx; // 一把锁
@@ -147,8 +150,10 @@ void safe_print() {
     // ... 临界区
     // 离开作用域自动解锁，即使发生异常也安全
 }
+```
 ### 5、原子变量 std::atomic
 对简单的整型操作，用原子变量更轻量，不用锁。
+```cpp
 #include <atomic>
 
 std::atomic<int> counter(0);
@@ -157,7 +162,9 @@ void add() {
     ++counter; // 原子操作，线程安全，无需 mutex
 }
 // std::atomic支持 ++、--、+= 等操作，保证中间状态不会被其他线程看到。
+```
 ### 6、综合例子
+```cpp
 #include <iostream>
 #include <thread>
 #include <mutex>
@@ -179,6 +186,7 @@ int main() {
     return 0;
 }
 // 输出类似 AAAAAAAABBBBBBBBBB（不同运行顺序可能不同，但不会出现ABAB交叉错乱）。
+```
 
 ## 六、C++ 在数据科学中应用
 
