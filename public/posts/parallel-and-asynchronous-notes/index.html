@@ -11,8 +11,8 @@
 	<meta property="og:locale" content="en">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-02-28T00:00:00+00:00">
-		<meta property="article:modified_time" content="2026-02-28T00:00:00+00:00">
+		<meta property="article:published_time" content="2026-01-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-01-05T00:00:00+00:00">
 		<meta property="article:tag" content="Parallel">
 		<meta property="article:tag" content="Asynchronous">
 		<meta property="article:tag" content="C&#43;&#43;">
@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/parallel-and-asynchronous-notes/" /><link rel="prev" href="http://localhost:1313/posts/cesium-data-processing/" /><link rel="next" href="http://localhost:1313/posts/data-processing/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/parallel-and-asynchronous-notes/" /><link rel="next" href="http://localhost:1313/posts/test-cover/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -36,8 +36,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/localhost:1313\/posts\/parallel-and-asynchronous-notes\/"
-        },"genre": "posts","keywords": "Parallel, Asynchronous, c\u002b\u002b","wordcount":  302 ,
-        "url": "http:\/\/localhost:1313\/posts\/parallel-and-asynchronous-notes\/","datePublished": "2026-02-28T00:00:00+00:00","dateModified": "2026-02-28T00:00:00+00:00","publisher": {
+        },"genre": "posts","keywords": "Parallel, Asynchronous, c\u002b\u002b","wordcount":  916 ,
+        "url": "http:\/\/localhost:1313\/posts\/parallel-and-asynchronous-notes\/","datePublished": "2026-01-05T00:00:00+00:00","dateModified": "2026-01-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -91,8 +91,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Parallel and Asynchronous Notes</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>WaterFlowers</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-28">2026-02-28</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;302 words&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-01-05">2026-01-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;916 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -131,6 +131,22 @@
       </ul>
     </li>
     <li><a href="#六c-在数据科学中应用">六、C++ 在数据科学中应用</a></li>
+    <li><a href="#七常用的异步函数模版">七、常用的异步函数模版</a>
+      <ul>
+        <li><a href="#1常用头文件">1.	常用头文件：</a></li>
+      </ul>
+    </li>
+    <li><a href="#八智能指针">八、智能指针</a>
+      <ul>
+        <li><a href="#1-三巨头核心区别选型铁律">1. 三巨头核心区别（选型铁律）</a></li>
+        <li><a href="#2-创建方式最重要的一行代码">2. 创建方式（最重要的一行代码）</a></li>
+        <li><a href="#3-常用成员函数速查表必背">3. 常用成员函数速查表（必背！）</a></li>
+        <li><a href="#4-运算符重载用起来像指针">4. 运算符重载（用起来像指针）</a></li>
+        <li><a href="#5-所有权转移移动语义">5. 所有权转移（移动语义）</a></li>
+        <li><a href="#6-解决-shared_ptr-循环引用的杀手锏weak_ptr">6. 解决 shared_ptr 循环引用的杀手锏（weak_ptr）</a></li>
+        <li><a href="#7案例">7、案例</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>写程序时，完全不用管核心数，想创建多少线程就创建多少（当然，太多会因切换开销而变慢）。</p>
@@ -221,7 +237,7 @@
         alt="/images/thread-1.jpg"
         title="替代文字" /></p>
 </li>
-</ul>
+<li>
 <p><strong>④ 异步-单线程</strong>：任务执行不需要等待其他任务的完成。但在一个时间点只能有一个任务执行。。
 <img
         class="lazyload"
@@ -231,9 +247,9 @@
         data-sizes="auto"
         alt="/images/start.jpg"
         title="替代文字" /></p>
-<ul>
-<li><strong>④ 异步-多线程</strong>：任务执行不需要等待其他任务的完成。但在同一个时间点可以有多个任务执行。（Thread-1 运行 Task-1 时，Thread-2 同时运行 Task-2）</li>
-</ul>
+</li>
+<li>
+<p><strong>④ 异步-多线程</strong>：任务执行不需要等待其他任务的完成。但在同一个时间点可以有多个任务执行。（Thread-1 运行 Task-1 时，Thread-2 同时运行 Task-2）</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -242,6 +258,8 @@
         data-sizes="auto"
         alt="/images/thread-2.jpg"
         title="替代文字" /></p>
+</li>
+</ul>
 <p>在开发和并行中同步和异步程序是什么样的角色？异步程序模型帮助我们实现并发，多线程中的异步程序模型是一种实现并发的方式。</p>
 <h4 id="2-多进程">(2) 多进程</h4>
 <p>每个进程拥有独立的内存空间。进程A不能直接访问进程B的变量，必须通过专门的“进程间通信（IPC）”机制来交换数据，比如管道、消息队列、共享内存、socket等。这种隔离让进程更安全：一个进程崩溃一般不会影响其他进程。</p>
@@ -261,17 +279,24 @@
 <p>3、单线程和多线程指的是任务执行的环境。</p>
 <h2 id="五案例-基本语法">五、案例 (基本语法)</h2>
 <h3 id="1创建线程">1、创建线程</h3>
-<p>#include <!-- raw HTML omitted -->
-#include <!-- raw HTML omitted --></p>
-<p>void task(int x) {
-// 线程要执行的代码
-}</p>
-<p>int main() {
-// 创建线程，立刻执行 task(10)
-// 第一个参数是可调用对象（函数、lambda、函数对象等），后面的参数是传给函数的实参
-std::thread t(task, 10);
-return 0;
-}</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">task</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 线程要执行的代码
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建线程，立刻执行 task(10)
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 第一个参数是可调用对象（函数、lambda、函数对象等），后面的参数是传给函数的实参
+</span></span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">t</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 <h3 id="2等待线程结束-join">2、等待线程结束 join()</h3>
 <p>t.join(); // 主线程会在这里等待，直到t执行完
 // join 相当于“等它干完活再继续”
@@ -280,65 +305,526 @@ return 0;
 <p>t.detach(); // 线程在后台独立运行，主线程不再等待
 // 使用 detach 要小心：必须保证线程访问的资源（变量等）在它结束前一直有效。</p>
 <h3 id="4互斥锁-stdmutex">4、互斥锁 std::mutex</h3>
-<p>防止多个线程同时访问共享数据。
-#include <!-- raw HTML omitted --></p>
-<p>std::mutex mtx; // 一把锁</p>
-<p>void safe_print() {
-mtx.lock();   // 加锁
-// &hellip; 临界区，只有一个线程能进入
-mtx.unlock(); // 解锁
-}
-或者，更推荐的方式：用 std::lock_guard 自动加锁/解锁，不会忘。
-void safe_print() {
-std::lock_guard<a href="std::mutex" rel="">std::mutex</a> lock(mtx); // 构造时加锁
-// &hellip; 临界区
-// 离开作用域自动解锁，即使发生异常也安全
-}</p>
-<h3 id="5原子变量-stdatomic">5、原子变量 std::atomic</h3>
-<p>对简单的整型操作，用原子变量更轻量，不用锁。
-#include <!-- raw HTML omitted --></p>
-<p>std::atomic<!-- raw HTML omitted --> counter(0);</p>
-<p>void add() {
-++counter; // 原子操作，线程安全，无需 mutex
-}
-// std::atomic支持 ++、&ndash;、+= 等操作，保证中间状态不会被其他线程看到。</p>
-<h3 id="6综合例子">6、综合例子</h3>
-<p>#include <!-- raw HTML omitted -->
-#include <!-- raw HTML omitted -->
-#include <!-- raw HTML omitted --></p>
-<p>std::mutex mtx;</p>
-<p>void print(char c) {
-for (int i = 0; i &lt; 10; ++i) {
-std::lock_guard<a href="std::mutex" rel="">std::mutex</a> lock(mtx);
-std::cout &laquo; c; // 保证每次输出不会被其他线程打断
-}
-}</p>
-<p>int main() {
-std::thread t1(print, &lsquo;A&rsquo;);
-std::thread t2(print, &lsquo;B&rsquo;);
-t1.join();
-t2.join();
-return 0;
-}
-// 输出类似 AAAAAAAABBBBBBBBBB（不同运行顺序可能不同，但不会出现ABAB交叉错乱）。</p>
-<h2 id="六c-在数据科学中应用">六、C++ 在数据科学中应用</h2>
-<p>C++ 在数据科学中的重点图谱
-层次	重点内容	与数据科学的连接
-生存基础	指针、STL、内存管理、编译	把 Python 慢循环改写成高效 C++
-价值桥梁	pybind11、Cython	让 Python 无缝调用 C++ 核心
-性能倍增器	多线程 (OpenMP/thread)、SIMD、CUDA	榨干多核 CPU/GPU，加速模拟、推理、数据预处理
-造轮工坊	模板元编程、表达式模板	设计通用高效数值库（极少人需要）</p>
+<p>防止多个线程同时访问共享数据。</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-cpp">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
         <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">return</span> <span class="mi">42</span><span class="p">;</span></span></span></code></pre></div></div>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">mtx</span><span class="p">;</span> <span class="c1">// 一把锁
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">safe_print</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mtx</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>   <span class="c1">// 加锁
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// ... 临界区，只有一个线程能进入
+</span></span></span><span class="line"><span class="cl">    <span class="n">mtx</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span> <span class="c1">// 解锁
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">或者，更推荐的方式：用</span> <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span> <span class="err">自动加锁</span><span class="o">/</span><span class="err">解锁，不会忘。</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">safe_print</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span> <span class="c1">// 构造时加锁
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// ... 临界区
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 离开作用域自动解锁，即使发生异常也安全
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<h3 id="5原子变量-stdatomic">5、原子变量 std::atomic</h3>
+<p>对简单的整型操作，用原子变量更轻量，不用锁。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;atomic&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">counter</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">add</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">++</span><span class="n">counter</span><span class="p">;</span> <span class="c1">// 原子操作，线程安全，无需 mutex
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// std::atomic支持 ++、--、+= 等操作，保证中间状态不会被其他线程看到。
+</span></span></span></code></pre></div></div>
+<h3 id="6综合例子">6、综合例子</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">mtx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">;</span> <span class="c1">// 保证每次输出不会被其他线程打断
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">t1</span><span class="p">(</span><span class="n">print</span><span class="p">,</span> <span class="sc">&#39;A&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">t2</span><span class="p">(</span><span class="n">print</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 输出类似 AAAAAAAABBBBBBBBBB（不同运行顺序可能不同，但不会出现ABAB交叉错乱）。
+</span></span></span></code></pre></div></div>
+<h2 id="六c-在数据科学中应用">六、C++ 在数据科学中应用</h2>
+<p><strong>C++ 在数据科学中的重点图谱</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>层次</code></th>
+					<th style="text-align: center"><code>重点内容</code></th>
+					<th style="text-align: right"><code>与数据科学的连接</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">生存基础</td>
+					<td style="text-align: center">指针、STL、内存管理、编译</td>
+					<td style="text-align: right">把 Python 慢循环改写成高效 C++</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">价值桥梁</td>
+					<td style="text-align: center">pybind11、Cython</td>
+					<td style="text-align: right">让 Python 无缝调用 C++ 核心</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">性能倍增器</td>
+					<td style="text-align: center">多线程 (OpenMP/thread)、SIMD、CUDA</td>
+					<td style="text-align: right">榨干多核 CPU/GPU，加速模拟、推理、数据预处理</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">造轮工坊</td>
+					<td style="text-align: center">模板元编程、表达式模板</td>
+					<td style="text-align: right">设计通用高效数值库（极少人需要）</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="七常用的异步函数模版">七、常用的异步函数模版</h2>
+<h3 id="1常用头文件">1.	常用头文件：</h3>
+<h4 id="1---异步任务与结果传递">1. <future> —— 异步任务与结果传递</h4>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>组件</code></th>
+					<th style="text-align: center"><code>种类</code></th>
+					<th style="text-align: right"><code>作用</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">std::async</td>
+					<td style="text-align: center">函数模板</td>
+					<td style="text-align: right">启动异步任务，返回 std::future</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::future<T></td>
+					<td style="text-align: center">类模板</td>
+					<td style="text-align: right">持有异步任务的“未来结果”，通过 get() 获取</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::shared_future<T></td>
+					<td style="text-align: center">类模板</td>
+					<td style="text-align: right">允许多个线程等待同一结果（可多次 get()）</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::promise<T></td>
+					<td style="text-align: center">类模板</td>
+					<td style="text-align: right">手动设置值或异常，与 future 配对，用于线程间通信</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::packaged_task<F></td>
+					<td style="text-align: center">类模板</td>
+					<td style="text-align: right">包装可调用对象，生成 future，可传给线程执行</td>
+			</tr>
+	</tbody>
+</table>
+<p>典型用法：
+std::async 快速启动任务。
+std::promise / std::future 实现更灵活的结果传递。
+std::packaged_task 把任务封装起来，搭配 std::thread 使用。</p>
+<h4 id="2---线程管理">2. <thread> —— 线程管理</h4>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>组件</code></th>
+					<th style="text-align: center"><code>种类</code></th>
+					<th style="text-align: right"><code>作用</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">std::thread</td>
+					<td style="text-align: center">类</td>
+					<td style="text-align: right">创建和管理线程</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::this_thread::sleep_for</td>
+					<td style="text-align: center">函数模板</td>
+					<td style="text-align: right">让当前线程休眠指定时间</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::this_thread::yield</td>
+					<td style="text-align: center">函数</td>
+					<td style="text-align: right">主动让出 CPU 时间片</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::this_thread::get_id</td>
+					<td style="text-align: center">函数</td>
+					<td style="text-align: right">获取当前线程 ID</td>
+			</tr>
+	</tbody>
+</table>
+<p>常用配合：用 std::thread 显式创建线程，再用 <future> 传递结果。</p>
+<h4 id="3---时间工具">3. <chrono> —— 时间工具</h4>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>组件</code></th>
+					<th style="text-align: center"><code>种类</code></th>
+					<th style="text-align: right"><code>作用</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">std::chrono::seconds</td>
+					<td style="text-align: center">类型别名</td>
+					<td style="text-align: right">表示秒级时长</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::chrono::milliseconds</td>
+					<td style="text-align: center">类型别名</td>
+					<td style="text-align: right">毫秒</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">std::chrono::steady_clock</td>
+					<td style="text-align: center">类</td>
+					<td style="text-align: right">单调时钟，适合测量间隔</td>
+			</tr>
+	</tbody>
+</table>
+<p>常和 sleep_for 一起用，指定等待时长。</p>
+<h4 id="4-同步工具多线程共享数据时用">4. 同步工具（多线程共享数据时用）</h4>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>头文件</code></th>
+					<th style="text-align: center"><code>核心类/模板</code></th>
+					<th style="text-align: right"><code>作用</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left"><mutex></td>
+					<td style="text-align: center">std::mutex, std::lock_guard, std::unique_lock</td>
+					<td style="text-align: right">互斥锁，保护临界区</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">&lt;condition_variable&gt;</td>
+					<td style="text-align: center">std::condition_variable</td>
+					<td style="text-align: right">线程等待/通知机制</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><atomic></td>
+					<td style="text-align: center">std::atomic<T></td>
+					<td style="text-align: right">原子操作，无锁同步</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="5总结">5、总结</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="err">启动异步任务</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">├─</span> <span class="n">std</span><span class="o">::</span><span class="n">async</span>           <span class="err">→</span> <span class="err">自动创建线程，返回</span> <span class="n">future</span>
+</span></span><span class="line"><span class="cl"><span class="err">├─</span> <span class="n">std</span><span class="o">::</span><span class="n">packaged_task</span>   <span class="err">→</span> <span class="err">包装任务，获取</span> <span class="n">future</span><span class="err">，可手动传给</span> <span class="kr">thread</span>
+</span></span><span class="line"><span class="cl"><span class="err">└─</span> <span class="n">std</span><span class="o">::</span><span class="n">promise</span>         <span class="err">→</span> <span class="err">纯手动设置值，与</span> <span class="n">future</span> <span class="err">配对</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">获取结果</span>
+</span></span><span class="line"><span class="cl"><span class="err">└─</span> <span class="n">std</span><span class="o">::</span><span class="n">future</span> <span class="o">/</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_future</span>  <span class="err">→</span> <span class="err">通过</span> <span class="n">get</span><span class="p">()</span> <span class="err">等待并取值</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">线程控制</span>
+</span></span><span class="line"><span class="cl"><span class="err">└─</span> <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="o">/</span> <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">时间控制</span>
+</span></span><span class="line"><span class="cl"><span class="err">└─</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span> <span class="o">+</span> <span class="n">sleep_for</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">安全同步</span>
+</span></span><span class="line"><span class="cl"><span class="err">└─</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="o">/</span> <span class="n">std</span><span class="o">::</span><span class="n">atomic</span> <span class="o">/</span> <span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span></span></span></code></pre></div></div>
+<p>（1）只想要异步执行并拿结果 → std::async + std::future。<br>
+（2）需要精细控制线程和结果传递 → std::thread + std::promise / std::packaged_task + std::future。<br>
+（3）涉及共享数据 → 必须搭配 <mutex> 或 <atomic>。</p>
+<h2 id="八智能指针">八、智能指针</h2>
+<h3 id="1-三巨头核心区别选型铁律">1. 三巨头核心区别（选型铁律）</h3>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>指针类型</code></th>
+					<th style="text-align: center"><code>外号</code></th>
+					<th style="text-align: right"><code>核心特征</code></th>
+					<th style="text-align: right"><code>使用场景</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">unique_ptr</td>
+					<td style="text-align: center">独占指针</td>
+					<td style="text-align: right">独生子。不准拷贝，只能移动（std::move）</td>
+					<td style="text-align: right">绝大多数日常场景，代替裸指针管理资源。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">shared_ptr</td>
+					<td style="text-align: center">共享指针</td>
+					<td style="text-align: right">引用计数。允许多人拷贝，最后一个销毁时释放资源。</td>
+					<td style="text-align: right">多个对象需要共享同一块数据（如多线程、图结构）。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">weak_ptr</td>
+					<td style="text-align: center">弱引用指针</td>
+					<td style="text-align: right">小弟助攻。不增加引用计数，配合 shared_ptr 使用。</td>
+					<td style="text-align: right">专门用来打破循环引用（内存泄漏元凶），观察者模式。</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="2-创建方式最重要的一行代码">2. 创建方式（最重要的一行代码）</h3>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>指针类型</code></th>
+					<th style="text-align: center"><code>正确创建姿势（C++14 起</code>）</th>
+					<th style="text-align: right"><code>错误姿势（别碰）</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">unique_ptr</td>
+					<td style="text-align: center">auto p = std::make_unique<int>(10);</td>
+					<td style="text-align: right">❌ unique_ptr<int> p(new int(10));（啰嗦且异常不安全）</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">shared_ptr</td>
+					<td style="text-align: center">auto p = std::make_shared<int>(10);</td>
+					<td style="text-align: right">❌ shared_ptr<int> p(new int(10));（内存碎片多）</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">核心记忆：永远优先使用 make_unique 和 make_shared。</td>
+					<td></td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="3-常用成员函数速查表必背">3. 常用成员函数速查表（必背！）</h3>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><code>函数</code></th>
+					<th style="text-align: center"><code>作用</code></th>
+					<th style="text-align: right"><code>示例</code></th>
+					<th style="text-align: right"><code>注意事项</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">get()</td>
+					<td style="text-align: center">获取内部的裸指针（仅供查看）</td>
+					<td style="text-align: right">int* raw = p.get();</td>
+					<td style="text-align: right">千万不要 delete raw，否则智能指针析构时会二次释放崩溃。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">reset()</td>
+					<td style="text-align: center">重置指针。释放旧资源，指向新资源（或空）</td>
+					<td style="text-align: right">p.reset(); (置空)p.reset(new int(5)); (换新)</td>
+					<td style="text-align: right">释放后记得检查 if(p)。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">release()</td>
+					<td style="text-align: center">仅 unique_ptr 有。放弃所有权，返回裸指针，但不释放内存</td>
+					<td style="text-align: right">int* raw = p.release();</td>
+					<td style="text-align: right">调用后 p 变为 nullptr，你必须手动 delete raw，否则内存泄漏。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">swap()</td>
+					<td style="text-align: center">交换两个智能指针的内容</td>
+					<td style="text-align: right">p1.swap(p2);</td>
+					<td style="text-align: right">很少用，知道就行。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">use_count()</td>
+					<td style="text-align: center">仅 shared_ptr 有。返回当前引用计数</td>
+					<td style="text-align: right">long cnt = p.use_count();</td>
+					<td style="text-align: right">只用于调试，不要依赖它做业务逻辑。</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="4-运算符重载用起来像指针">4. 运算符重载（用起来像指针）</h3>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">操作</th>
+					<th style="text-align: center">写法</th>
+					<th style="text-align: right">说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">解引用</td>
+					<td style="text-align: center">*p</td>
+					<td style="text-align: right">获取对象本身。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">箭头访问</td>
+					<td style="text-align: center">p-&gt;func()</td>
+					<td style="text-align: right">访问成员函数或变量。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">布尔判空</td>
+					<td style="text-align: center">if(p) 或 if(!p)</td>
+					<td style="text-align: right">判断是否为空指针（检查内部是否 nullptr）。</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="5-所有权转移移动语义">5. 所有权转移（移动语义）</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">unique_ptr</span><span class="err">：只能移动，不能拷贝。</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span> <span class="c1">// ✅ p1 变为空，p2 接手
+</span></span></span><span class="line"><span class="cl"><span class="c1">// std::unique_ptr&lt;int&gt; p3 = p1; // ❌ 编译报错（拷贝被禁用）
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="err">：可拷贝（引用计数</span> <span class="o">+</span><span class="mi">1</span><span class="err">）。</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="p">;</span> <span class="c1">// ✅ 两者指向同一块内存，计数变为 2
+</span></span></span></code></pre></div></div>
+<h3 id="6-解决-shared_ptr-循环引用的杀手锏weak_ptr">6. 解决 shared_ptr 循环引用的杀手锏（weak_ptr）</h3>
+<p>如果两个类互相持有 shared_ptr，会造成内存泄漏（析构时你等我、我等你）。
+破解法：将其中一方改为 weak_ptr。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span><span class="p">;</span> <span class="c1">// 前置声明
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span> <span class="n">b_ptr</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">a_ptr</span><span class="p">;</span> <span class="p">};</span> <span class="c1">// 这里用 weak，不增加引用计数
+</span></span></span><span class="line"><span class="cl"><span class="err">使用</span> <span class="n">weak_ptr</span> <span class="err">前，必须调用</span> <span class="n">lock</span><span class="p">()</span> <span class="err">将其临时升级为</span> <span class="n">shared_ptr</span><span class="err">，以确保访问时对象还在</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="k">auto</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">weak_a</span><span class="p">.</span><span class="n">lock</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// 升级成功
+</span></span></span><span class="line"><span class="cl">    <span class="n">tmp</span><span class="o">-&gt;</span><span class="n">doSomething</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<h3 id="7案例">7、案例</h3>
+<h4 id="unique_ptr-独占指针">Unique_ptr (独占指针)</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Product</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">show</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Product ready&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 工厂函数：直接返回 unique_ptr，所有权转给调用方
+</span></span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">createProduct</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//std::unique_ptr&lt;Product&gt; createProduct()是一个函数 createProduct()，其类型为std::unique_ptr&lt;Product&gt;.,类似于int max（），其返回值是一个独占智能指针，这个指针独占Product对象。
+</span></span></span></code></pre></div></div>
+<p>返回值是调用函数std::make_unique<Product>()，这是模版函数,即工厂函数，调用这个函数生成指向Product对象的智能指针unique_ptr。
+也可以这样写:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="nf">createProduct</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">p</span> <span class="o">=</span> <span class="n">createProduct</span><span class="p">();</span> <span class="c1">// p 接管对象
+</span></span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="o">-&gt;</span><span class="n">show</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 函数结束，p 自动 delete Product
+</span></span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<h4 id="shared_ptr-共享指针">Shared_Ptr 共享指针</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Resource</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Resource</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Resource released&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">work</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Working...&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Resource</span><span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">-&gt;</span><span class="n">work</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;foo 中计数: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Resource</span><span class="o">&gt;</span><span class="p">();</span> <span class="c1">// 计数 1
+</span></span></span><span class="line"><span class="cl"><span class="c1">//调用模版函数，生成智能指针指向Resource对象。
+</span></span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">r1</span><span class="p">;</span>  <span class="c1">// 计数 2（共享同一份资源）
+</span></span></span><span class="line"><span class="cl"><span class="n">foo</span><span class="p">(</span><span class="n">r2</span><span class="p">);</span>    <span class="c1">// 传入函数，计数临时变 3；值传递
+</span></span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;main 中计数: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">r1</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 输出 2
+</span></span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;main 中计数: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">r2</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 输出 2
+</span></span></span><span class="line"><span class="cl"><span class="c1">//两条输出一样
+</span></span></span><span class="line"><span class="cl"><span class="c1">//r1和r2共享一个内存；计数器是2；当传入函数的时候，值传递，拷贝构造，这时候函数中的计数是3；再回到main的时候函数中的指针释放了，这时候main中还是2；
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 离开 main，r2 先销毁（计数变1），r1 再销毁（计数变0，析构 Resource）
+</span></span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<h4 id="weak_ptr弱指针不增加计数">weak_ptr弱指针，不增加计数</h4>
+<p>如果父子都用 shared_ptr，双方析构时你等我、我等你，内存永远不释放。必须把其中一方改成 weak_ptr。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Child</span><span class="p">;</span> <span class="c1">// 前置声明
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Parent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Child</span><span class="o">&gt;</span> <span class="n">child</span><span class="p">;</span> <span class="c1">// 父亲拥有孩子（强引用）
+</span></span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Parent</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Parent 释放&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Child</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">Parent</span><span class="o">&gt;</span> <span class="n">parent</span><span class="p">;</span> <span class="c1">// 孩子只观察父亲（弱引用）！关键点
+</span></span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Child</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Child 释放&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">dad</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Parent</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//调用模版函数，生成共享指针，指向parent对象
+</span></span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">son</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Child</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//调用模版函数，生成共享指针，指向Child对象
+</span></span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">dad</span><span class="o">-&gt;</span><span class="n">child</span> <span class="o">=</span> <span class="n">son</span><span class="p">;</span>   <span class="c1">// dad 强引用 son
+</span></span></span><span class="line"><span class="cl">    <span class="n">son</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">dad</span><span class="p">;</span>  <span class="c1">// son 弱引用 dad（若写成强引用，这里必泄漏！）
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 离开作用域，两个对象都正常析构（打印 Parent释放 和 Child释放）
+</span></span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<div align="center">
+  <img src="E:\Hugo_site\static\images\ptr.jpg" width="80%" alt="图1">
+  <p><em>图 1</em></p>
+</div>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2026-02-28</span>
+                <span>Updated on 2026-01-05</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -355,8 +841,8 @@ return 0;
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/cesium-data-processing/" class="prev" rel="prev" title="两京智策开发笔记：Cesium 数据处理与空间分析"><i class="fas fa-angle-left" aria-hidden="true"></i>两京智策开发笔记：Cesium 数据处理与空间分析</a>
-            <a href="/posts/data-processing/" class="next" rel="next" title="LiangJingCe - Development NotesData : Data Sources">LiangJingCe - Development NotesData : Data Sources<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+    <div class="post-nav">
+            <a href="/posts/test-cover/" class="next" rel="next" title="Test Cover Image">Test Cover Image<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

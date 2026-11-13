@@ -21,11 +21,18 @@
 				<description>The following table summarises the datasets employed in the study, including their specifications, analytical functions, and spatial coverage.</description>
 			</item>
 			<item>
-				<title>Parallel and Asynchronous Notes</title>
-				<link>http://localhost:1313/posts/parallel-and-asynchronous-notes/</link>
-				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/posts/parallel-and-asynchronous-notes/</guid>
-				<description>Parallel and Asynchronous Notes</description>
+				<title>Gradient Calculation Method</title>
+				<link>http://localhost:1313/posts/gradient-calculation-method-in-gis/</link>
+				<pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/posts/gradient-calculation-method-in-gis/</guid>
+				<description>Gradient Calculation Method</description>
+			</item>
+			<item>
+				<title>DEM Clipping Algorithm Overview</title>
+				<link>http://localhost:1313/posts/dem-clipping-algorithm-overview/</link>
+				<pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/posts/dem-clipping-algorithm-overview/</guid>
+				<description>DEM Clipping Algorithm Overview</description>
 			</item>
 			<item>
 				<title>两京智策开发笔记：Cesium 数据处理与空间分析</title>
@@ -35,18 +42,18 @@
 				<description>记录在项目开发中处理唐代长安-洛阳路网数据的过程与踩坑经验。</description>
 			</item>
 			<item>
-				<title>两京智策开发笔记：Cesium 数据处理与空间分析</title>
-				<link>http://localhost:1313/posts/hpc-optimization-notes/</link>
-				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/posts/hpc-optimization-notes/</guid>
-				<description>记录在项目开发中处理唐代长安-洛阳路网数据的过程与踩坑经验。</description>
-			</item>
-			<item>
 				<title>Test Cover Image</title>
 				<link>http://localhost:1313/posts/test-cover/</link>
 				<pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
 				<guid>http://localhost:1313/posts/test-cover/</guid>
 				<description>&lt;p&gt;&lt;img&#xD;&#xA;        class=&#34;lazyload&#34;&#xD;&#xA;        src=&#34;http://localhost:1313/svg/loading.min.svg&#34;&#xD;&#xA;        data-src=&#34;http://localhost:1313/images/heng01.jpg&#34;&#xD;&#xA;        data-srcset=&#34;http://localhost:1313/images/heng01.jpg, http://localhost:1313/images/heng01.jpg 1.5x, http://localhost:1313/images/heng01.jpg 2x&#34;&#xD;&#xA;        data-sizes=&#34;auto&#34;&#xD;&#xA;        alt=&#34;/images/heng01.jpg&#34;&#xD;&#xA;        title=&#34;封面图片&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;这是一篇测试封面图的文章。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Parallel and Asynchronous Notes</title>
+				<link>http://localhost:1313/posts/parallel-and-asynchronous-notes/</link>
+				<pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/posts/parallel-and-asynchronous-notes/</guid>
+				<description>Parallel and Asynchronous Notes</description>
 			</item>
 	</channel>
 </rss>

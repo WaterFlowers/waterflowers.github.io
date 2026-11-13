@@ -1,7 +1,7 @@
 baseURL = 'https://waterflowers.github.io/'
 title = 'SpatialLab'   # ← 改了
 theme = 'LoveIt'
-languageCode = 'en'
+locale = "en"
 
 [params]
   customCSS = ['css/custom.css']
@@ -74,3 +74,7 @@ languageCode = 'en'
   weight = 5
   # '关于我' 已删除，避免重复
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

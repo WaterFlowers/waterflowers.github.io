@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Waterflowers Knowledge</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/dem-clipping-algorithm-overview/">
+	<meta property="og:site_name" content="SpatialLab">
+	<meta property="og:title" content="DEM Clipping Algorithm Overview">
+	<meta property="og:description" content="DEM Clipping Algorithm Overview">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-03-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-03-05T00:00:00+00:00">
+		<meta property="article:tag" content="DEM">
+		<meta property="article:tag" content="Clippingg">
+		<meta property="article:tag" content="C&#43;&#43;">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="DEM Clipping Algorithm Overview">
+	<meta name="twitter:description" content="DEM Clipping Algorithm Overview">
+			<meta name="twitter:site" content="@你的TwitterID">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/dem-clipping-algorithm-overview/" /><link rel="prev" href="http://localhost:1313/posts/cesium-data-processing/" /><link rel="next" href="http://localhost:1313/posts/gradient-calculation-method-in-gis/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "DEM Clipping Algorithm Overview",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/dem-clipping-algorithm-overview\/"
+        },"genre": "posts","keywords": "DEM, Clippingg, c\u002b\u002b","wordcount":  90 ,
+        "url": "http:\/\/localhost:1313\/posts\/dem-clipping-algorithm-overview\/","datePublished": "2026-03-05T00:00:00+00:00","dateModified": "2026-03-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "WaterFlowers"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'dark';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="SpatialLab">ZhangHengwei · HPC&amp;SpatialLab</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/projects/liangjing/"> Projects </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="SpatialLab">ZhangHengwei · HPC&amp;SpatialLab</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/projects/liangjing/" title="">Projects</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><link rel="stylesheet" href="/css/custom.css"><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DEM Clipping Algorithm Overview</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>WaterFlowers</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-05">2026-03-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;90 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#dem-clipping-algorithm-overview">DEM Clipping Algorithm Overview</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="dem-clipping-algorithm-overview">DEM Clipping Algorithm Overview</h2>
+<p>高程图的数据源来自地理空间数据云上，截取长安-洛阳之间的区域作为数据范围。地理空间数据云上框选了“长安洛阳这部分”，下载到的瓦片拼接后，实际范围仍然比你需要的要大得多。 这是因为瓦片是按固定的图幅分幅提供的，不得不下载覆盖更大区域的多个瓦片才能拼出完整的走廊。
+在计算坡度构建成本面的时候，数据量过大导致pc内存爆满而无法计算的情况；为了缩小计算量，必须对原高程图进行缩减也裁剪。
+原合并后的数组形状是 (10801, 28801)，即 10801 行（纬度方向）、28801 列（经度方向），这个范围基本覆盖了东西从陕西区域到山东区域，覆盖过大。
+长安（西安）到洛阳的漕运走廊，大致范围是：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">经度</span><span class="err">：</span><span class="mf">107.5</span><span class="err">°</span><span class="n">E</span> <span class="n">到</span> <span class="mf">113.5</span><span class="err">°</span><span class="n">E</span><span class="err">（</span><span class="n">跨度约</span> <span class="mi">6</span><span class="err">°，</span><span class="n">约</span> <span class="mi">550</span> <span class="n">公里</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="n">纬度</span><span class="err">：</span><span class="mf">33.5</span><span class="err">°</span><span class="n">N</span> <span class="n">到</span> <span class="mf">35.5</span><span class="err">°</span><span class="n">N</span><span class="err">（</span><span class="n">跨度约</span> <span class="mi">2</span><span class="err">°，</span><span class="n">约</span> <span class="mi">220</span> <span class="n">公里</span><span class="err">）</span></span></span></code></pre></div></div>
+<p>用这个范围裁剪后的 DEM，大小约为：
+总像素比原来减少一半多，占用也也会大幅下降，计算时间也会大幅缩短。
+如果裁剪后的计算量还是超过了内存承载，则进一步缩小到只关注两个城市周边（如长安周边 100km，洛阳周边 100km），数据量会更小。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">rasterio</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">rasterio.windows</span> <span class="kn">import</span> <span class="n">from_bounds</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 精确的研究区范围</span>
+</span></span><span class="line"><span class="cl"><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">107.5</span><span class="p">,</span> <span class="mf">33.5</span><span class="p">,</span> <span class="mf">113.5</span><span class="p">,</span> <span class="mf">35.5</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;changan_luoyang_merged.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">window</span> <span class="o">=</span> <span class="n">from_bounds</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dem</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">transform</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">window_transform</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+</span></span><span class="line"><span class="cl"><span class="n">profile</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="n">dem</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="n">dem</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="n">transform</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;dtype&#39;</span><span class="p">:</span> <span class="s1">&#39;float32&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;changan_luoyang_corridor.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;裁剪后尺寸: </span><span class="si">{</span><span class="n">dem</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-03-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-title="DEM Clipping Algorithm Overview" data-via="你的TwitterID" data-hashtags="DEM,Clippingg,c&#43;&#43;"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-title="DEM Clipping Algorithm Overview"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-hashtag="DEM"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-title="DEM Clipping Algorithm Overview"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-title="DEM Clipping Algorithm Overview"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-title="DEM Clipping Algorithm Overview"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/dem-clipping-algorithm-overview/" data-title="DEM Clipping Algorithm Overview" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdem-clipping-algorithm-overview%2f&amp;text=DEM%20Clipping%20Algorithm%20Overview" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/dem/">DEM</a>,&nbsp;<a href="/tags/clippingg/">Clippingg</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cesium-data-processing/" class="prev" rel="prev" title="两京智策开发笔记：Cesium 数据处理与空间分析"><i class="fas fa-angle-left" aria-hidden="true"></i>两京智策开发笔记：Cesium 数据处理与空间分析</a>
+            <a href="/posts/gradient-calculation-method-in-gis/" class="next" rel="next" title="Gradient Calculation Method">Gradient Calculation Method<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">WaterFlowers</a></span></div>
+
+            
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<section>
+  <span id="busuanzi_container_value_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+  &nbsp;|&nbsp;
+  <span id="busuanzi_container_value_site_uv">
+    访客数 <span id="busuanzi_value_site_uv"></span> 人
+  </span>
+</section>
+
+
+
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"comment":{}};</script><script src="/js/theme.js"></script></body>
+</html>
