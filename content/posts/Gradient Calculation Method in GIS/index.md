@@ -1,13 +1,15 @@
 ---
-title: "Gradient Calculation Method in GIS"
-date: 2026-04-2
+title: "Gradient Calculation Method"
+date: 2026-04-02
 draft: false
-tags: ["Cesium", "GIS", "数据处理"]
-summary: "Gradient Calculation Method in GIS"
+tags: ["Gradient", "GIS"]
+summary: "Gradient Calculation Method"
 ---
 
-## Gradient Calculation Method in GIS
+## Gradient Calculation Method
+
 ## 梯度的计算
+
 ### 1、概念：
 梯度是多变量函数在某点的变化率方向，指向函数值增加最快的方向。
 ### 2、一维梯度
