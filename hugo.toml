@@ -11,7 +11,7 @@ locale = "en"
    maxWidth = "100%"    # 试试这个
 
 [params.header.title]
-  name = 'ZhangHengwei · HPC&SpatialLab'          # ← 改了
+  name = 'Zhanghengwei · HPC&Spatial Lab'          # ← 改了
   subtitle = 'HPC · Digital Twin'  # ← 新增，可选
 
 [params.home.profile]
