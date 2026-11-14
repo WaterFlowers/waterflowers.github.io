@@ -8,15 +8,34 @@ disableAnchoredHeadings: true
 <div class="hero-divider"></div>
 
 
-## LiangJingCe: System and Method for Historical Spatial Computing and Data Science Powered by C++ Parallel Optimization
+## Liangjing Ce: Historical-Geographic Spatial Data Science and Real-Time Decision System with C++ Parallel Optimization and RAG Enhancement
 
 ---
-**两京智策 · 基于C++并行优化的历史地理空间计算与数据科学系统及方法**
+**两京智策 · 基于C++并行优化与RAG增强的历史地理空间数据科学与实时决策系统**
 
 
 **HPC · Spatial Computing · RAG**
 
-An immersive decision-making platform for the historical-geographical analysis of Chang’an–Luoyang in the Tang Dynasty, integrating high-performance spatial computing, RAG-based intelligent retrieval, and UE5-powered immersive visualization.
+### Project Overview
+
+This project constructs a high-performance spatial computing and data science system tailored for historical geography research. Centering on the core decision-making scenario of grain transport and storage optimization between Chang'an (the capital) and Luoyang (the eastern capital) of the Tang Dynasty, the system integrates multi-source spatial data and historical documents to establish a complete technical closed-loop spanning data acquisition, spatial analytical modeling, knowledge-augmented retrieval, and immersive visualization.   
+
+In terms of system architecture, the project strictly adheres to the design principle of "separating heavy offline computation from real-time online services": a Python offline pipeline handles computation-intensive spatial analysis and knowledge base construction, while a C++ online backend undertakes high-concurrency, low-latency real-time dialogue and RAG retrieval tasks. To address the server's performance bottlenecks under concurrent scenarios, the project implements a fixed-size thread pool based on std::thread, std::mutex, and std::condition_variable, replacing the original dynamic thread creation approach using std::async, and validates the optimization results through perf flame graph analysis.   
+
+This system is not merely a technical exploration in historical geography research, but also a comprehensive embodiment of high-performance computing, data science, and systems engineering.  
+
+Core Objective of "Liangjing Ce"   
+
+How can we optimize the granary site selection and transport routes between Chang'an and Luoyang, given the topographical, hydrological, and security constraints of the Tang Dynasty?   
+This project realizes a complete technical pipeline: Raw Geographic Data → Modeling & Analysis → High-Performance Computing → Immersive 3D Visualization.   
+
+>Integrated System Modules   
+
+- Data Science (Spatial Modeling and Analysis)   
+- High-Performance Computing (C++ Concurrency Optimization)   
+- Retrieval-Augmented Generation (RAG)   
+- Real-time Voice Interaction (UE5 C++ - Tencent ASR/TTS - DeepSeek API)   
+- 3D Immersive Visualization (UE5 + Cesium)   
 
 ### 系统演示
 <!-- ===== 视频封面（放在这里） ===== -->
