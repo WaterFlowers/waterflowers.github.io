@@ -11,6 +11,7 @@ disableAnchoredHeadings: true
 ## Liangjing Ce: Historical-Geographic Spatial Data Science and Real-Time Decision System with C++ Parallel Optimization and RAG Enhancement
 
 ---
+
 **两京智策 · 基于C++并行优化与RAG增强的历史地理空间数据科学与实时决策系统**
 
 
@@ -18,16 +19,22 @@ disableAnchoredHeadings: true
 
 ### Project Overview
 
+---
+
 This project constructs a high-performance spatial computing and data science system tailored for historical geography research. Centering on the core decision-making scenario of grain transport and storage optimization between Chang'an (the capital) and Luoyang (the eastern capital) of the Tang Dynasty, the system integrates multi-source spatial data and historical documents to establish a complete technical closed-loop spanning data acquisition, spatial analytical modeling, knowledge-augmented retrieval, and immersive visualization.   
 
 In terms of system architecture, the project strictly adheres to the design principle of "separating heavy offline computation from real-time online services": a Python offline pipeline handles computation-intensive spatial analysis and knowledge base construction, while a C++ online backend undertakes high-concurrency, low-latency real-time dialogue and RAG retrieval tasks. To address the server's performance bottlenecks under concurrent scenarios, the project implements a fixed-size thread pool based on std::thread, std::mutex, and std::condition_variable, replacing the original dynamic thread creation approach using std::async, and validates the optimization results through perf flame graph analysis.   
 
 This system is not merely a technical exploration in historical geography research, but also a comprehensive embodiment of high-performance computing, data science, and systems engineering.  
 
+---
+
 Core Objective of "Liangjing Ce"   
 
 How can we optimize the granary site selection and transport routes between Chang'an and Luoyang, given the topographical, hydrological, and security constraints of the Tang Dynasty?   
 This project realizes a complete technical pipeline: Raw Geographic Data → Modeling & Analysis → High-Performance Computing → Immersive 3D Visualization.   
+
+---
 
 >Integrated System Modules   
 

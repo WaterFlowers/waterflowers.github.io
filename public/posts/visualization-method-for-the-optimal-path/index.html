@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Waterflowers Knowledge</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/visualization-method-for-the-optimal-path/">
+	<meta property="og:site_name" content="SpatialLab">
+	<meta property="og:title" content="Visualization method for the optimal path">
+	<meta property="og:description" content="Visualization method for the optimal path">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-06-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-06-05T00:00:00+00:00">
+		<meta property="article:tag" content="Visualization">
+		<meta property="article:tag" content="Optimal Path">
+		<meta property="article:tag" content="C&#43;&#43;">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Visualization method for the optimal path">
+	<meta name="twitter:description" content="Visualization method for the optimal path">
+			<meta name="twitter:site" content="@你的TwitterID">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" /><link rel="prev" href="http://localhost:1313/posts/data-analysis-notes/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Visualization method for the optimal path",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/visualization-method-for-the-optimal-path\/"
+        },"genre": "posts","keywords": "Visualization, optimal path, c\u002b\u002b","wordcount":  470 ,
+        "url": "http:\/\/localhost:1313\/posts\/visualization-method-for-the-optimal-path\/","datePublished": "2026-06-05T00:00:00+00:00","dateModified": "2026-06-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "WaterFlowers"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'dark';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="SpatialLab">Zhanghengwei · HPC&amp;Spatial Lab</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/projects/liangjing/"> Projects </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="SpatialLab">Zhanghengwei · HPC&amp;Spatial Lab</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/projects/liangjing/" title="">Projects</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><link rel="stylesheet" href="/css/custom.css"><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Visualization method for the optimal path</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>WaterFlowers</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-06-05">2026-06-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;470 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#visualization-method-for-the-optimal-path">Visualization method for the optimal path</a></li>
+    <li><a href="#最优路径的可视化方法">最优路径的可视化方法</a>
+      <ul>
+        <li><a href="#一实现方法">一、实现方法</a></li>
+        <li><a href="#二效果展示">二、效果展示：</a></li>
+        <li><a href="#三关键代码">三、关键代码</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="visualization-method-for-the-optimal-path">Visualization method for the optimal path</h2>
+<hr>
+<h2 id="最优路径的可视化方法">最优路径的可视化方法</h2>
+<p>optimal_route.geojson</p>
+<h3 id="一实现方法">一、实现方法</h3>
+<h4 id="1在-ue5-中读取-geojson-文件">1、在 UE5 中读取 GeoJSON 文件：</h4>
+<p>用 C++ 代码解析 optimal_route.geojson，提取其中的 LineString 坐标序列。</p>
+<h4 id="2将经纬度转换为-ue5-世界坐标">2、将经纬度转换为 UE5 世界坐标：</h4>
+<p>用 CesiumGeoreference 的 TransformLongitudeLatitudeHeightToUnreal 函数，将每个经纬度点（高度设为地形上方一定值，如50米）转换为引擎内的三维坐标。</p>
+<h4 id="3创建一条可视的线">3、创建一条可视的线：</h4>
+<h5 id="方法一推荐">方法一（推荐）：</h5>
+<p>创建一个 Actor，挂载 USplineComponent，将转换后的坐标依次设置为样条线的点。然后可以用一个半透明的发光材质渲染这条线，使其在三维地形上清晰可见。</p>
+<h5 id="方法二">方法二：</h5>
+<p>使用cesium的 CesiumGlobeAnchor 或 CesiumCartographicPolygon 组件，但后者更适合面。样条线更灵活。</p>
+<h3 id="二效果展示">二、效果展示：</h3>
+<h4 id="1对比历史仓储点">1、对比历史仓储点</h4>
+<h5 id="1数据准备史料记载和考古数据等">（1）数据准备：（史料记载和考古数据等）</h5>
+<p>唐代真实粮仓的坐标（如长安太仓、东渭桥仓、洛阳含嘉仓等）。</p>
+<h5 id="2做法">（2）做法：</h5>
+<p>在 Cesium 上，用 红色/金色光柱 标记这些历史仓储点。<br>
+模型计算出的 TOP候选点（从仓储选址适宜性评价中得到）与历史仓储点叠加显示。如果模型推荐点与真实遗址空间位置接近，就直观验证了模型的有效性。</p>
+<h4 id="2在地图上交互选址自动计算成本">2、在地图上交互选址，自动计算成本</h4>
+<p>进阶功能：</p>
+<h5 id="1数据准备">（1）数据准备：</h5>
+<p>在 Python 离线分析时，不仅生成最终适宜性热力图，还生成一个 查询表（CSV），记录每个像素（或采样点）的经纬度、坡度、距河距离、坡度成本、水系成本、综合成本等字段。</p>
+<h5 id="2ue5-交互">（2）UE5 交互：</h5>
+<p>用户在数据洞察模式下，点击 Cesium 地形上的任意位置。<br>
+查询逻辑：C++ 代码获取点击处的经纬度，在 CSV 表中查找最近的记录，读取该点的坡度、距河距离和成本值。<br>
+显示结果：弹出一个 UMG 面板，显示： <br>
+坡度：X.X°<br>
+距最近河流：XXX 米<br>
+综合建仓成本：XX.X<br>
+适宜性等级：高/中/低<br>
+决策支持：用户可以看到，如果在这里建仓，成本是多少，是否合适。实现“系统自动计算选择点的成本数据”。<br>
+为避免实时读取大CSV， UE5 启动时一次性将 CSV 加载到内存（使用 TMap 或空间索引），点击时快速查找。</p>
+<h4 id="3价值体现">3、价值体现</h4>
+<p>（1）路径显示：直观证明成本距离分析算法有效，并展示了 C++/UE5 与 Python 分析的集成能力。 <br>
+（2）历史对比：体现了跨学科研究的严谨性——用数据科学方法验证历史决策。 <br>
+（3）交互选址：将静态分析升级为 探索式决策支持系统，实现“从分析到决策”的闭环。</p>
+<h3 id="三关键代码">三、关键代码</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">.</span><span class="n">h</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#pragma once
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;CoreMinimal.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;GameFramework/Actor.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Components/SplineComponent.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;OptimalRouteActor.generated.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">UCLASS</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">YOURPROJECT_API</span> <span class="nl">AOptimalRouteActor</span> <span class="p">:</span> <span class="k">public</span> <span class="n">AActor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GENERATED_BODY</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="n">AOptimalRouteActor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// 蓝图调用：解析 GeoJSON 文件，返回经纬度点数组（X=经度，Y=纬度）
+</span></span></span><span class="line"><span class="cl">    <span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span> <span class="n">Category</span> <span class="o">=</span> <span class="s">&#34;Route&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector2D</span><span class="o">&gt;</span> <span class="n">ParseGeoJSON</span><span class="p">(</span><span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">FilePath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// 蓝图调用：设置路径点（世界坐标），并生成样条线
+</span></span></span><span class="line"><span class="cl">    <span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span> <span class="n">Category</span> <span class="o">=</span> <span class="s">&#34;Route&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">SetRoutePoints</span><span class="p">(</span><span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector</span><span class="o">&gt;&amp;</span> <span class="n">WorldPoints</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">BeginPlay</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">UPROPERTY</span><span class="p">(</span><span class="n">VisibleAnywhere</span><span class="p">,</span> <span class="n">BlueprintReadOnly</span><span class="p">,</span> <span class="n">Category</span> <span class="o">=</span> <span class="s">&#34;Route&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">USplineComponent</span><span class="o">*</span> <span class="n">SplineComponent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">UPROPERTY</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TArray</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">USplineMeshComponent</span><span class="o">*&gt;</span> <span class="n">SplineMeshes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">BuildSplineMeshes</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">.</span><span class="n">cpp</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;OptimalRouteActor.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Components/SplineComponent.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Components/SplineMeshComponent.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Engine/StaticMesh.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Misc/FileHelper.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Serialization/JsonReader.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Serialization/JsonSerializer.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">AOptimalRouteActor</span><span class="o">::</span><span class="n">AOptimalRouteActor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PrimaryActorTick</span><span class="p">.</span><span class="n">bCanEverTick</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//创建样条线
+</span></span></span><span class="line"><span class="cl">    <span class="n">SplineComponent</span> <span class="o">=</span> <span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">USplineComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;SplineComponent&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SetRootComponent</span><span class="p">(</span><span class="n">SplineComponent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 解析 GeoJSON，返回经纬度数组
+</span></span></span><span class="line"><span class="cl"><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector2D</span><span class="o">&gt;</span> <span class="n">AOptimalRouteActor</span><span class="o">::</span><span class="n">ParseGeoJSON</span><span class="p">(</span><span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">FilePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector2D</span><span class="o">&gt;</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 读取文件内容
+</span></span></span><span class="line"><span class="cl">    <span class="n">FString</span> <span class="n">JSONString</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">FFileHelper</span><span class="o">::</span><span class="n">LoadFileToString</span><span class="p">(</span><span class="n">JSONString</span><span class="p">,</span> <span class="o">*</span><span class="n">FilePath</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Warning</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;无法读取 GeoJSON 文件: %s&#34;</span><span class="p">),</span> <span class="o">*</span><span class="n">FilePath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解析 JSON
+</span></span></span><span class="line"><span class="cl"><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FJsonObject</span><span class="o">&gt;</span><span class="n">JsonObject</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">TJsonReader</span><span class="o">&lt;&gt;&gt;</span><span class="n">Reader</span><span class="o">=</span><span class="n">TJsonReaderFactory</span><span class="o">&lt;&gt;::</span><span class="n">Create</span><span class="p">(</span><span class="n">JSONString</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">FJsonSerializer</span><span class="o">::</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">Reader</span><span class="p">,</span> <span class="n">JsonObject</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">JsonObject</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Warning</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;GeoJSON 解析失败&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取 features 数组
+</span></span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FJsonValue</span><span class="o">&gt;&gt;*</span> <span class="n">FeaturesArray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">JsonObject</span><span class="o">-&gt;</span><span class="n">TryGetArrayField</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;features&#34;</span><span class="p">),</span> <span class="n">FeaturesArray</span><span class="p">)</span> <span class="o">||</span> <span class="n">FeaturesArray</span><span class="o">-&gt;</span><span class="n">Num</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Warning</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;GeoJSON 中没有 features 数组&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 取第一个 feature
+</span></span></span><span class="line"><span class="cl">    <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FJsonObject</span><span class="o">&gt;</span> <span class="n">FirstFeature</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">FeaturesArray</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">AsObject</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FJsonObject</span><span class="o">&gt;*</span> <span class="n">GeometryObject</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">FirstFeature</span><span class="o">-&gt;</span><span class="n">TryGetObjectField</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;geometry&#34;</span><span class="p">),</span> <span class="n">GeometryObject</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Warning</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;没有 geometry 字段&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取 coordinates 数组
+</span></span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FJsonValue</span><span class="o">&gt;&gt;*</span> <span class="n">CoordinatesArray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="n">GeometryObject</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">TryGetArrayField</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;coordinates&#34;</span><span class="p">),</span> <span class="n">CoordinatesArray</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Warning</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;没有 coordinates 数组&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 遍历坐标
+</span></span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">CoordinatesArray</span><span class="o">-&gt;</span><span class="n">Num</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FJsonValue</span><span class="o">&gt;&gt;*</span> <span class="n">PointArray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="n">CoordinatesArray</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">TryGetArray</span><span class="p">(</span><span class="n">PointArray</span><span class="p">)</span> <span class="o">||</span> <span class="n">PointArray</span><span class="o">-&gt;</span><span class="n">Num</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">Longitude</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">PointArray</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">AsNumber</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">Latitude</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">PointArray</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">AsNumber</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 存入经纬度，X=经度，Y=纬度
+</span></span></span><span class="line"><span class="cl">        <span class="n">Result</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">FVector2D</span><span class="p">(</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">Latitude</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Log</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;成功解析 %d 个坐标点&#34;</span><span class="p">),</span> <span class="n">Result</span><span class="p">.</span><span class="n">Num</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 设置世界坐标路径点并生成样条线
+</span></span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">AOptimalRouteActor</span><span class="o">::</span><span class="n">SetRoutePoints</span><span class="p">(</span><span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector</span><span class="o">&gt;&amp;</span> <span class="n">WorldPoints</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">WorldPoints</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Warning</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;路径点数量不足&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">ClearSplinePoints</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">WorldPoints</span><span class="p">.</span><span class="n">Num</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">AddSplinePoint</span><span class="p">(</span><span class="n">WorldPoints</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="n">ESplineCoordinateSpace</span><span class="o">::</span><span class="n">World</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">UpdateSpline</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BuildSplineMeshes</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span> <span class="n">Log</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;样条线已生成，共 %d 个点&#34;</span><span class="p">),</span> <span class="n">WorldPoints</span><span class="p">.</span><span class="n">Num</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">AOptimalRouteActor</span><span class="o">::</span><span class="n">BuildSplineMeshes</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 清理旧网格
+</span></span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">SplineMeshes</span><span class="p">.</span><span class="n">Num</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">SplineMeshes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMeshes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">DestroyComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SplineMeshes</span><span class="p">.</span><span class="n">Empty</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 加载圆柱体网格
+</span></span></span><span class="line"><span class="cl">    <span class="n">UStaticMesh</span><span class="o">*</span> <span class="n">CylinderMesh</span> <span class="o">=</span> <span class="n">LoadObject</span><span class="o">&lt;</span><span class="n">UStaticMesh</span><span class="o">&gt;</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">&#34;/Engine/BasicShapes/Cylinder.Cylinder&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">CylinderMesh</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">int32</span> <span class="n">NumPoints</span> <span class="o">=</span> <span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">GetNumberOfSplinePoints</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">NumPoints</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 为每段创建 SplineMeshComponent
+</span></span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NumPoints</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>      
+</span></span><span class="line"><span class="cl"><span class="n">USplineMeshComponent</span><span class="o">*</span><span class="n">SplineMesh</span><span class="o">=</span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">USplineMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">SetStaticMesh</span><span class="p">(</span><span class="n">CylinderMesh</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">SetMobility</span><span class="p">(</span><span class="n">EComponentMobility</span><span class="o">::</span><span class="n">Movable</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">AttachToComponent</span><span class="p">(</span><span class="n">SplineComponent</span><span class="p">,</span> <span class="n">FAttachmentTransformRules</span><span class="o">::</span><span class="n">KeepRelativeTransform</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">RegisterComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">FVector</span> <span class="n">StartPos</span><span class="o">=</span><span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">GetLocationAtSplinePoint</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ESplineCoordinateSpace</span><span class="o">::</span><span class="n">World</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">FVector</span> <span class="n">EndPos</span><span class="o">=</span><span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">GetLocationAtSplinePoint</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ESplineCoordinateSpace</span><span class="o">::</span><span class="n">World</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FVector</span> <span class="n">StartTangent</span> <span class="o">=</span> <span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">GetTangentAtSplinePoint</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ESplineCoordinateSpace</span><span class="o">::</span><span class="n">World</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FVector</span> <span class="n">EndTangent</span> <span class="o">=</span> <span class="n">SplineComponent</span><span class="o">-&gt;</span><span class="n">GetTangentAtSplinePoint</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ESplineCoordinateSpace</span><span class="o">::</span><span class="n">World</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">SetStartAndEnd</span><span class="p">(</span><span class="n">StartPos</span><span class="p">,</span> <span class="n">StartTangent</span><span class="p">,</span> <span class="n">EndPos</span><span class="p">,</span> <span class="n">EndTangent</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">SetStartScale</span><span class="p">(</span><span class="n">FVector2D</span><span class="p">(</span><span class="mf">0.1f</span><span class="p">,</span> <span class="mf">0.1f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMesh</span><span class="o">-&gt;</span><span class="n">SetEndScale</span><span class="p">(</span><span class="n">FVector2D</span><span class="p">(</span><span class="mf">0.1f</span><span class="p">,</span> <span class="mf">0.1f</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SplineMeshes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">SplineMesh</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-06-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-title="Visualization method for the optimal path" data-via="你的TwitterID" data-hashtags="Visualization,optimal path,c&#43;&#43;"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-title="Visualization method for the optimal path"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-hashtag="Visualization"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-title="Visualization method for the optimal path"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-title="Visualization method for the optimal path"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-title="Visualization method for the optimal path"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/visualization-method-for-the-optimal-path/" data-title="Visualization method for the optimal path" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fvisualization-method-for-the-optimal-path%2f&amp;text=Visualization%20method%20for%20the%20optimal%20path" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/visualization/">Visualization</a>,&nbsp;<a href="/tags/optimal-path/">Optimal Path</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/data-analysis-notes/" class="prev" rel="prev" title="Data Analysis Notes"><i class="fas fa-angle-left" aria-hidden="true"></i>Data Analysis Notes</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">WaterFlowers</a></span></div>
+
+            
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<section>
+  <span id="busuanzi_container_value_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+  &nbsp;|&nbsp;
+  <span id="busuanzi_container_value_site_uv">
+    访客数 <span id="busuanzi_value_site_uv"></span> 人
+  </span>
+</section>
+
+
+
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"comment":{}};</script><script src="/js/theme.js"></script></body>
+</html>
