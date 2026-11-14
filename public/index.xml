@@ -48,11 +48,11 @@
 <item>
     <title>Test Cover Image</title>
     <link>http://localhost:1313/posts/test-cover/</link>
-    <pubDate>Wed, 22 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <pubDate>Mon, 22 Jan 2024 00:00:00 &#43;0000</pubDate>
     <author>WaterFlowers</author>
     <guid>http://localhost:1313/posts/test-cover/</guid>
     <description><![CDATA[<p></p>
-<p>这是一篇测试封面图的文章。</p>]]></description>
+<p>This is the Test Cover Image.</p>]]></description>
 </item>
 </channel>
 </rss>

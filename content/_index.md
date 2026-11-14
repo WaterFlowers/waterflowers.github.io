@@ -9,7 +9,9 @@ disableAnchoredHeadings: true
 
 
 ## LiangJingCe: System and Method for Historical Spatial Computing and Data Science Powered by C++ Parallel Optimization
-### 两京智策 · 基于C++并行优化的历史地理空间计算与数据科学系统及方法
+
+---
+**两京智策 · 基于C++并行优化的历史地理空间计算与数据科学系统及方法**
 
 
 **HPC · Spatial Computing · RAG**
