@@ -19,5 +19,13 @@
     <guid>http://localhost:1313/posts/data-processing/</guid>
     <description><![CDATA[The following table summarises the datasets employed in the study, including their specifications, analytical functions, and spatial coverage.]]></description>
 </item>
+<item>
+    <title>Server configuration test</title>
+    <link>http://localhost:1313/posts/server-configuration-test/</link>
+    <pubDate>Fri, 20 Feb 2026 00:00:00 &#43;0000</pubDate>
+    <author>WaterFlowers</author>
+    <guid>http://localhost:1313/posts/server-configuration-test/</guid>
+    <description><![CDATA[Server configuration test]]></description>
+</item>
 </channel>
 </rss>

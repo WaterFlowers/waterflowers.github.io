@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Waterflowers Knowledge</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/server-configuration-test/">
+	<meta property="og:site_name" content="SpatialLab">
+	<meta property="og:title" content="Server configuration test">
+	<meta property="og:description" content="Server configuration test">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-02-20T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-02-20T00:00:00+00:00">
+		<meta property="article:tag" content="Data">
+		<meta property="article:tag" content="Server">
+		<meta property="article:tag" content="Test">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Server configuration test">
+	<meta name="twitter:description" content="Server configuration test">
+			<meta name="twitter:site" content="@你的TwitterID">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/server-configuration-test/" /><link rel="prev" href="http://localhost:1313/posts/parallel-and-asynchronous-notes/" /><link rel="next" href="http://localhost:1313/posts/dem-clipping-algorithm-overview/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Server configuration test",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/server-configuration-test\/"
+        },"genre": "posts","keywords": "Data, Server, test","wordcount":  234 ,
+        "url": "http:\/\/localhost:1313\/posts\/server-configuration-test\/","datePublished": "2026-02-20T00:00:00+00:00","dateModified": "2026-02-20T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "WaterFlowers"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'dark';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="SpatialLab">Zhanghengwei · HPC&amp;Spatial Lab</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/projects/liangjing/"> Projects </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="SpatialLab">Zhanghengwei · HPC&amp;Spatial Lab</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/projects/liangjing/" title="">Projects</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+    <link rel="stylesheet" href="/css/custom.css">
+</header><link rel="stylesheet" href="/css/custom.css"><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Server configuration test</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>WaterFlowers</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-02-20">2026-02-20</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;234 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#server-configuration-test">Server configuration test</a>
+      <ul>
+        <li><a href="#1-准备依赖">1. 准备依赖</a></li>
+        <li><a href="#2-编写服务器主程序-maincpp">2. 编写服务器主程序 main.cpp</a></li>
+        <li><a href="#3-编写-cmakeliststxt">3. 编写 CMakeLists.txt</a></li>
+        <li><a href="#4-编译并运行">4. 编译并运行</a></li>
+        <li><a href="#5-测试服务器">5. 测试服务器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="server-configuration-test">Server configuration test</h2>
+<hr>
+<h3 id="1-准备依赖">1. 准备依赖</h3>
+<p>在你的Ubuntu虚拟机里，确保已经安装了必要的库：<br>
+sudo apt install build-essential cmake libssl-dev -y<br>
+然后创建项目文件夹，下载两个头文件库（只需头文件，无需编译）：<br>
+mkdir ai_server &amp;&amp; cd ai_server<br>
+wget <a href="https://raw.githubusercontent.com/yhirose/cpp-httplib/master/httplib.h" target="_blank" rel="noopener noreffer ">https://raw.githubusercontent.com/yhirose/cpp-httplib/master/httplib.h</a><br>
+wget <a href="https://github.com/nlohmann/json/releases/latest/download/json.hpp" target="_blank" rel="noopener noreffer ">https://github.com/nlohmann/json/releases/latest/download/json.hpp</a></p>
+<h3 id="2-编写服务器主程序-maincpp">2. 编写服务器主程序 main.cpp</h3>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-cpp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;httplib.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;json.hpp&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">json</span> <span class="o">=</span> <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">httplib</span><span class="o">::</span><span class="n">Server</span> <span class="n">svr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 接收UE5发来的POST请求
+</span></span></span><span class="line"><span class="cl">    <span class="n">svr</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="s">&#34;/chat&#34;</span><span class="p">,</span> <span class="p">[](</span><span class="k">const</span> <span class="n">httplib</span><span class="o">::</span><span class="n">Request</span><span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">httplib</span><span class="o">::</span><span class="n">Response</span><span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 1. 解析UE5发来的JSON，提取文本
+</span></span></span><span class="line"><span class="cl">            <span class="k">auto</span> <span class="n">req_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">user_text</span> <span class="o">=</span> <span class="n">req_json</span><span class="p">[</span><span class="s">&#34;text&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;收到UE5文本: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">user_text</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 2. 向DeepSeek API发送请求
+</span></span></span><span class="line"><span class="cl">            <span class="n">httplib</span><span class="o">::</span><span class="n">Client</span> <span class="n">deepseek</span><span class="p">(</span><span class="s">&#34;https://api.deepseek.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">deepseek</span><span class="p">.</span><span class="n">set_default_headers</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span><span class="s">&#34;Authorization&#34;</span><span class="p">,</span> <span class="s">&#34;Bearer My_DEEPSEEK_API_KEY&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;application/json&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">json</span> <span class="n">ds_body</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span><span class="s">&#34;model&#34;</span><span class="p">,</span> <span class="s">&#34;deepseek-chat&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span><span class="s">&#34;messages&#34;</span><span class="p">,</span> <span class="n">json</span><span class="o">::</span><span class="n">array</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{{</span><span class="s">&#34;role&#34;</span><span class="p">,</span> <span class="s">&#34;user&#34;</span><span class="p">,</span> <span class="s">&#34;content&#34;</span><span class="p">,</span> <span class="n">user_text</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">})},</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span><span class="s">&#34;stream&#34;</span><span class="p">,</span> <span class="nb">false</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">auto</span> <span class="n">ds_res</span> <span class="o">=</span> <span class="n">deepseek</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="s">&#34;/chat/completions&#34;</span><span class="p">,</span> <span class="n">ds_body</span><span class="p">.</span><span class="n">dump</span><span class="p">(),</span> <span class="s">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 3. 解析DeepSeek的返回，提取回答文本
+</span></span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ds_res</span> <span class="o">&amp;&amp;</span> <span class="n">ds_res</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">auto</span> <span class="n">ds_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">ds_res</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">reply</span> <span class="o">=</span> <span class="n">ds_json</span><span class="p">[</span><span class="s">&#34;choices&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#34;message&#34;</span><span class="p">][</span><span class="s">&#34;content&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="n">json</span> <span class="n">resp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resp</span><span class="p">[</span><span class="s">&#34;reply&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reply</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resp</span><span class="p">[</span><span class="s">&#34;status&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#34;ok&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span><span class="p">.</span><span class="n">set_content</span><span class="p">(</span><span class="n">resp</span><span class="p">.</span><span class="n">dump</span><span class="p">(),</span> <span class="s">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">json</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">err</span><span class="p">[</span><span class="s">&#34;status&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#34;error&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">err</span><span class="p">[</span><span class="s">&#34;message&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#34;DeepSeek API调用失败&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span><span class="p">.</span><span class="n">set_content</span><span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">dump</span><span class="p">(),</span> <span class="s">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">json</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">err</span><span class="p">[</span><span class="s">&#34;status&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#34;error&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">err</span><span class="p">[</span><span class="s">&#34;message&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&#34;服务器内部错误: &#34;</span><span class="p">)</span> <span class="o">+</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="p">.</span><span class="n">set_content</span><span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">dump</span><span class="p">(),</span> <span class="s">&#34;application/json&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;服务器启动: http://0.0.0.0:8080&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">svr</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="s">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<h3 id="3-编写-cmakeliststxt">3. 编写 CMakeLists.txt</h3>
+<p>cmake_minimum_required(VERSION 3.10)<br>
+project(AIServer)<br>
+set(CMAKE_CXX_STANDARD 17)<br>
+find_package(OpenSSL REQUIRED)<br>
+add_executable(ai_server main.cpp)<br>
+target_link_libraries(ai_server PRIVATE pthread OpenSSL::SSL OpenSSL::Crypto)</p>
+<h3 id="4-编译并运行">4. 编译并运行</h3>
+<p>mkdir build &amp;&amp; cd build<br>
+cmake ..<br>
+make<br>
+./ai_server</p>
+<p>终端显示“服务器启动: http://0.0.0.0:8080”就说明成功了。</p>
+<h3 id="5-测试服务器">5. 测试服务器</h3>
+<p>可以用 curl 模拟UE5客户端：<br>
+curl -X POST http://localhost:8080/chat \<br>
+-H &ldquo;Content-Type: application/json&rdquo; \<br>
+-d &lsquo;{&ldquo;text&rdquo;:&ldquo;你好，介绍一下长安城的漕运系统&rdquo;}&rsquo;<br>
+如果返回了AI回答的JSON，说明链路完全打通。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-02-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/posts/server-configuration-test/" data-title="Server configuration test" data-via="你的TwitterID" data-hashtags="Data,Server,test"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/posts/server-configuration-test/" data-title="Server configuration test"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/server-configuration-test/" data-hashtag="Data"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/server-configuration-test/" data-title="Server configuration test"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/server-configuration-test/" data-title="Server configuration test"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/server-configuration-test/" data-title="Server configuration test"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/posts/server-configuration-test/" data-title="Server configuration test" data-description=""><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fserver-configuration-test%2f&amp;text=Server%20configuration%20test" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/data/">Data</a>,&nbsp;<a href="/tags/server/">Server</a>,&nbsp;<a href="/tags/test/">Test</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/parallel-and-asynchronous-notes/" class="prev" rel="prev" title="Parallel and Asynchronous Notes"><i class="fas fa-angle-left" aria-hidden="true"></i>Parallel and Asynchronous Notes</a>
+            <a href="/posts/dem-clipping-algorithm-overview/" class="next" rel="next" title="DEM Clipping Algorithm Overview">DEM Clipping Algorithm Overview<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">WaterFlowers</a></span></div>
+
+            
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<section>
+  <span id="busuanzi_container_value_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+  &nbsp;|&nbsp;
+  <span id="busuanzi_container_value_site_uv">
+    访客数 <span id="busuanzi_value_site_uv"></span> 人
+  </span>
+</section>
+
+
+
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script>window.config={"comment":{}};</script><script src="/js/theme.js"></script></body>
+</html>
